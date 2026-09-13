@@ -150,6 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c8a831a107efb428e3e4b30462c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableComponent
+  useDamping: 1
+  damping: 0.05
 --- !u!212 &595226828
 SpriteRenderer:
   serializedVersion: 2
@@ -380,6 +382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c8a831a107efb428e3e4b30462c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableComponent
+  useDamping: 0
+  damping: 0.1
 --- !u!212 &1692133442
 SpriteRenderer:
   serializedVersion: 2

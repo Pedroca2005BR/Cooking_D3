@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class DraggableComponent : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    [Header("Drag Settings")]
+    [SerializeField] bool useDamping = true;
+    [SerializeField] float damping = 0.05f;
+
     Vector3 velocity = Vector3.zero;
     Vector3 dragTargetPosition;
     bool isBeingDragged;
@@ -19,13 +23,21 @@ public class DraggableComponent : MonoBehaviour, IPointerUpHandler, IPointerDown
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             dragTargetPosition = new Vector3(worldPoint.x, worldPoint.y, 0);
 
-            // Suaviza a transição da posição do objeto para a posição do mouse
-            transform.position = Vector3.SmoothDamp(
-            transform.position,
-            dragTargetPosition,
-            ref velocity,
-            0.04f
-            );
+            if (useDamping)
+            {
+                // Suaviza a transição da posição do objeto para a posição do mouse
+                transform.position = Vector3.SmoothDamp(
+                transform.position,
+                dragTargetPosition,
+                ref velocity,
+                damping
+                );
+            }
+            else
+            {
+                // Move o objeto diretamente para a posição do mouse
+                transform.position = dragTargetPosition;
+            }
         }
     }
 
