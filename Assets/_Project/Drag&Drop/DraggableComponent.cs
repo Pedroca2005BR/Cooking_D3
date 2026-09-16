@@ -13,13 +13,13 @@ public class DraggableComponent : MonoBehaviour, IPointerUpHandler, IPointerDown
 
     void Update()
     {
-        // Enquanto o objeto estiver sendo arrastado, atualiza a posição do objeto para seguir o mouse
+        // Enquanto o objeto estiver sendo arrastado, atualiza a posiï¿½ï¿½o do objeto para seguir o mouse
         if (isBeingDragged)
         {
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             dragTargetPosition = new Vector3(worldPoint.x, worldPoint.y, 0);
 
-            // Suaviza a transição da posição do objeto para a posição do mouse
+            // Suaviza a transiï¿½ï¿½o da posiï¿½ï¿½o do objeto para a posiï¿½ï¿½o do mouse
             transform.position = Vector3.SmoothDamp(
             transform.position,
             dragTargetPosition,
@@ -30,19 +30,28 @@ public class DraggableComponent : MonoBehaviour, IPointerUpHandler, IPointerDown
     }
 
 
-    // Função chamada quando o usuário pressiona o botão do mouse sobre o objeto
+    // Funï¿½ï¿½o chamada quando o usuï¿½rio pressiona o botï¿½o do mouse sobre o objeto
     public void OnPointerDown(PointerEventData eventData)
     {
-        isBeingDragged = true;
-
-        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
-        dragTargetPosition = transform.position;
+        StartDragging();
     }
 
-    // Função chamada quando o usuário solta o botão do mouse após clicar sobre o objeto
+    // Funï¿½ï¿½o chamada quando o usuï¿½rio solta o botï¿½o do mouse apï¿½s clicar sobre o objeto
     public void OnPointerUp(PointerEventData eventData)
     {
         isBeingDragged = false;
     }
+
+    public void StartDragging()
+    {
+        isBeingDragged = true;
+
+        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(
+            Mouse.current.position.ReadValue()
+        );
+
+        dragTargetPosition = transform.position;
+        velocity = Vector3.zero;
+    }
+
 }
