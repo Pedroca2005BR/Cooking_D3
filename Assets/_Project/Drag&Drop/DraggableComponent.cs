@@ -45,15 +45,29 @@ public class DraggableComponent : MonoBehaviour, IPointerUpHandler, IPointerDown
     // Função chamada quando o usuário pressiona o botão do mouse sobre o objeto
     public void OnPointerDown(PointerEventData eventData)
     {
-        isBeingDragged = true;
-
-        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
-        dragTargetPosition = transform.position;
+        if (!isBeingDragged)
+        {
+            StartDragging();
+        }
+        else
+        {
+            StopDragging();
+        }
     }
 
     // Função chamada quando o usuário solta o botão do mouse após clicar sobre o objeto
     public void OnPointerUp(PointerEventData eventData)
+    {
+        StopDragging();
+    }
+
+
+    public void StartDragging()
+    {
+        isBeingDragged = true;
+    }
+
+    public void StopDragging()
     {
         isBeingDragged = false;
     }
