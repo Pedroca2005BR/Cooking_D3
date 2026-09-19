@@ -33,7 +33,7 @@ public class BaseIngredientData : ScriptableObject
         {
             if (data.process == process)
             {
-                if (data.minRange >= score && data.maxRange <= score)
+                if (data.minRange <= score && data.maxRange >= score)
                 {
                     return data;
                 }

@@ -31,6 +31,7 @@ public class IngredientRuntimeInstance
 
     public void SetBaseComponents(IngredientRuntimeInstance[] baseComponents)
     {
-        BaseComponents = new(baseComponents);
+        if (baseComponents != null)
+            BaseComponents = new(baseComponents);
     }
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(DraggableComponent))]
 public class IngredientComponent : MonoBehaviour
 {
-    [SerializeField] BaseIngredientData data;
+    public BaseIngredientData data;
     public IngredientRuntimeInstance ingredientInstance {  get; private set; }
 
     SpriteRenderer spriteRenderer;
 
-    private void Start()
+    private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -34,8 +34,11 @@ public class IngredientComponent : MonoBehaviour
         // Tries to update the sprite
         if (data.TryGetNewSprite(process, score, out Sprite spr, out Color col))
         {
+            Debug.Log("Found New Sprite");
+
             spriteRenderer.sprite = spr;
             spriteRenderer.color = col;
         }
+        Debug.Log("Ended AddProcess");
     }
 }
