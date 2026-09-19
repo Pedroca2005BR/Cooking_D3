@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefd9fea5dae6f48b42e4e823ac83f0, type: 3}
+  m_Name: Bife
+  m_EditorClassIdentifier: Assembly-CSharp::IngredienteDataSO
+  nomeIngrediente: Bife
+  tempoCozinhar: 10
+  tempoQueimar: 15
+  spriteCru: {fileID: 21300000, guid: 8779da73f8ddf9d43a9d493ea23aaa34, type: 3}
+  spriteCozido: {fileID: 21300000, guid: 660f3b5a5afa4d849a1a1da2af8be50a, type: 3}
+  spriteQueimado: {fileID: 21300000, guid: 4d47bd698375f804ca54a9446758f6f3, type: 3}
