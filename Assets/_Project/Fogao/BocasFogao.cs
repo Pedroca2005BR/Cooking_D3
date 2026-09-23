@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class BocasFogao : MonoBehaviour
 {
-    [Header("Confiduracao das bocas")]
-    public string tagBoca = "BocaFogao";
-
     [SerializeField] private float tamanhoColisor = 0.8f; //tamanho do colisor(trigger)
     
     private void Awake() {
@@ -45,8 +42,8 @@ public class BocasFogao : MonoBehaviour
             BoxCollider2D collider = novaBoca.AddComponent<BoxCollider2D>();
             collider.isTrigger = true;
             collider.size = tamanhoCollider;
-            //aplica a tag, para detectar a panela
-            novaBoca.tag = tagBoca;
+
+            novaBoca.AddComponent<BocaReceber>();
         }
     }
 }

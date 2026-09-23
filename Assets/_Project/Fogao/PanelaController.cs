@@ -2,15 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PanelaController : MonoBehaviour
+public class PanelaController : MonoBehaviour, IReceberIngrediente
 {
-    [Header("Config")]
-    public string tagBoca = "BocaFogao"; //tag para comparar
-
     public event Action<float> OnProcesso; //evento para atualizar a UI
-
-    public UnityEvent IniciarCozimento;
-    public UnityEvent PausarCozimento;
+    public event Action OnIniciarUI;
+    public event Action OnPausarUI;
 
     [Header("Estado atual")]
     [SerializeField] private bool noFogo = false; //variavel de estado para controlar a logica
@@ -40,20 +36,37 @@ public class PanelaController : MonoBehaviour
         Debug.Log("Panela saiu do fogo!");
     }
 
-    public void ReceberIngrediente(IngredienteFogao novoIngrediente) {
-        ingrediente = novoIngrediente.GetComponent<IngredienteFogao>();
-        Verificar();
-    }
-
     private void Verificar() {
         bool podeCozinhar = (noFogo && ingrediente != null);
 
         if(podeCozinhar && !estaCozinhando) {
             estaCozinhando = true;
-            IniciarCozimento?.Invoke();
+            OnIniciarUI?.Invoke();
         }else if(!podeCozinhar && estaCozinhando) {
             estaCozinhando = false;
-            PausarCozimento?.Invoke();
+            OnPausarUI?.Invoke();
+        }
+    }
+
+    public bool AceitaIngrediente(GameObject objeto) {
+        //so aceita se for um ingrediente e se a panela estiver vazia
+        return objeto.GetComponent<IngredienteFogao>() != null && ingrediente == null;
+    }
+
+    public void ReceberIngredienteSolto(GameObject objeto) {
+        IngredienteFogao novoIngrediente = objeto.GetComponent<IngredienteFogao>();
+        if(novoIngrediente != null) {
+            ingrediente = novoIngrediente;
+            Verificar();
+            Debug.Log("Panela recebeu ingrediente");
+        }
+    }
+
+    public void RemoverIngrediente(GameObject objeto) {
+        if(ingrediente != null && objeto == ingrediente.gameObject) {
+            ingrediente = null;
+            Verificar();
+            Debug.Log("Ingrediente removido da panela");
         }
     }
 }

@@ -1,5 +1,41 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &230255846796652915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 557305995480753806}
+  m_Layer: 0
+  m_Name: painelVisual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &557305995480753806
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230255846796652915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5150420503040111323}
+  m_Father: {fileID: 3665825565059492139}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &689474489737971444
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,13 +61,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689474489737971444}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4054018025338517848}
-  m_Father: {fileID: 3665825565059492139}
+  m_Father: {fileID: 557305995480753806}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -95,7 +131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3665825565059492139
 RectTransform:
   m_ObjectHideFlags: 0
@@ -108,7 +144,7 @@ RectTransform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5150420503040111323}
+  - {fileID: 557305995480753806}
   m_Father: {fileID: 4274205688040054753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -193,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_
   panela: {fileID: 1153996726797546320}
   barra: {fileID: 5381275399112183426}
+  painelVisual: {fileID: 230255846796652915}
 --- !u!1 &3475111349144631435
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +319,7 @@ GameObject:
   - component: {fileID: 1153996726797546320}
   - component: {fileID: 7711745711494381469}
   - component: {fileID: 4414007695264526807}
-  - component: {fileID: 1128614047558196544}
+  - component: {fileID: 3788079354803682169}
   m_Layer: 0
   m_Name: Panela
   m_TagString: Panela
@@ -389,37 +426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b92144ba7f56b43bc01c2db09b51cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PanelaController
-  tagBoca: BocaFogao
-  IniciarCozimento:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1255774975971256540}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  PausarCozimento:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1255774975971256540}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   noFogo: 0
   ingrediente: {fileID: 0}
 --- !u!58 &7711745711494381469
@@ -485,7 +491,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1128614047558196544
+--- !u!114 &3788079354803682169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -497,36 +503,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e91e66c3c14d8438a538ec7cb5ea76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropSystem
-  tagDoAlvo: BocaFogao
   imantarNoCentro: 1
   tornarFilhoDoAlvo: 0
-  AoLevantar:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1153996726797546320}
-        m_TargetAssemblyTypeName: PanelaController, Assembly-CSharp
-        m_MethodName: DesligarFogo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  AoSoltarNoAlvo:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1153996726797546320}
-        m_TargetAssemblyTypeName: PanelaController, Assembly-CSharp
-        m_MethodName: LigarFogo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

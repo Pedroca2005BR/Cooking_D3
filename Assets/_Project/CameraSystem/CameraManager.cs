@@ -29,16 +29,16 @@ public class CameraManager : MonoBehaviour {
             Camera.main.transform.position = cameras[0].transform.position;
     }
 
-    public void OnNext() {
-        if(camAtual < cameras.Length - 1) {
+    public void OnNext(InputAction.CallbackContext context) {
+        if(context.performed && camAtual < cameras.Length - 1) {
             int camAnterior = camAtual;
             camAtual++;
             AtualizarCamera(camAnterior, camAtual);
         }
     }
 
-    public void OnPrevious() {
-        if(camAtual > 0) {
+    public void OnPrevious(InputAction.CallbackContext context) {
+        if(context.performed && camAtual > 0) {
             int camAnterior = camAtual;
             camAtual--;
             AtualizarCamera(camAnterior, camAtual);

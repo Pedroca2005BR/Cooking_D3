@@ -9,6 +9,7 @@ public class IngredienteFogao : MonoBehaviour
     [Header("Estado Atual")]
     [SerializeField] private float tempoCozido = 0f;
     private EstadoCozimento estado = EstadoCozimento.Cru;
+    public bool jaFoiCortado = false;
 
     private SpriteRenderer spriteIng;
 
@@ -42,6 +43,16 @@ public class IngredienteFogao : MonoBehaviour
         spriteIng.sprite = dadosBase.spriteQueimado;
     }
 
+    private void AjustarColisor()
+    {
+        //ajusta o tamanho do colizor de acordo com o sprite
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+        if(col != null && spriteIng.sprite != null) 
+        {
+            col.size = spriteIng.sprite.bounds.size;
+        }
+    }
+
     public float CalculaPorcentagem() {
         if(dadosBase == null) return 0f;
 
@@ -53,17 +64,5 @@ public class IngredienteFogao : MonoBehaviour
         }
 
         return 1f;
-    }
-
-    public void SoltarIngrediente(GameObject alvo)
-    {
-        PanelaController panela = alvo.GetComponent<PanelaController>();
-        
-        if (panela != null)
-        {
-            panela.ReceberIngrediente(this); // Entrega o bife para a panela
-            GetComponent<Collider2D>().enabled = false; // Desliga o colisor como você queria
-            Debug.Log("Ingrediente entregue a panela!");
-        }
     }
 }
