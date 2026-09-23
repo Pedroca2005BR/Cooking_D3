@@ -3,14 +3,9 @@ using UnityEngine;
 
 public class IngredientRuntimeInstance
 {
-    BaseIngredientData data;
     public Dictionary<CookingProcess, int> ProcessScores { get; private set; } = new();
     public List<IngredientRuntimeInstance> BaseComponents { get; private set; }
 
-    public IngredientRuntimeInstance(BaseIngredientData data)
-    {
-        this.data = data;
-    }
 
     public void AddProcessScore(CookingProcess process, int score)
     {
@@ -34,4 +29,6 @@ public class IngredientRuntimeInstance
         if (baseComponents != null)
             BaseComponents = new(baseComponents);
     }
+
+    // TO DO: Get Score for this and every base ingredient
 }

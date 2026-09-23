@@ -2,18 +2,19 @@ using UnityEngine;
 
 namespace Process.Example
 {
+    [RequireComponent(typeof(FoodProcessorComponent))]
     public class ProcessExample : MonoBehaviour
     {
-        public CookingProcess cookingProcess;
         public int score;
         public float cooldown = 2f;
+        FoodProcessorComponent fpc;
 
         IngredientComponent ig;
         float _cd = -1;
 
         private void Start()
         {
-            Debug.Log("Existo " + TryGetComponent<Collider2D>(out Collider2D col));
+            fpc = GetComponent<FoodProcessorComponent>();
         }
 
         private void Update()
@@ -25,7 +26,7 @@ namespace Process.Example
 
                 if (_cd < 0 && ig != null)
                 {
-                    ig.AddProcess(cookingProcess, score);
+                    fpc.ProcessIngredient(ig, score);
                 }
             }
         }

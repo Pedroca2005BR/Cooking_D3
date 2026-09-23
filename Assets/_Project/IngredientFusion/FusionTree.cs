@@ -22,7 +22,7 @@ public class FusionTree : ScriptableObject
 public struct FusionData
 {
     public BaseIngredientData compositeIngredient;
-    public List<FusionComponent> components;
+    public List<BaseIngredientData> components;
 
     public bool TestComponents(BaseIngredientData[] ingredients)
     {
@@ -32,10 +32,8 @@ public struct FusionData
 
         foreach (var component in components)
         {
-            if (!component.isRequired)
-                continue;
 
-            int index = remainingIngredients.IndexOf(component.ingredient);
+            int index = remainingIngredients.IndexOf(component);
 
             if (index == -1)
                 return false;
@@ -45,11 +43,4 @@ public struct FusionData
 
         return true;
     }
-}
-
-[System.Serializable]
-public struct FusionComponent
-{
-    public BaseIngredientData ingredient;
-    public bool isRequired;
 }

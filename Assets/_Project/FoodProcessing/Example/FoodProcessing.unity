@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 217790402}
   - component: {fileID: 217790401}
   - component: {fileID: 217790400}
+  - component: {fileID: 217790404}
   m_Layer: 0
   m_Name: GoodKnife
   m_TagString: Untagged
@@ -150,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed5ebdf045c94743a412e897392dea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Process.Example.ProcessExample
-  cookingProcess: 1
   score: 57
   cooldown: 2
 --- !u!61 &217790401
@@ -273,6 +273,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &217790404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217790399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8568a794eb81a4c891b77f18db08d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodProcessorComponent
+  process: 1
 --- !u!1 &291137401
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +299,8 @@ GameObject:
   - component: {fileID: 291137403}
   - component: {fileID: 291137402}
   - component: {fileID: 291137406}
+  - component: {fileID: 291137408}
+  - component: {fileID: 291137407}
   m_Layer: 0
   m_Name: BadPot
   m_TagString: Untagged
@@ -341,8 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2857c6bac3089cd46ba52ff842e47b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Process.Example.FuseExample
-  FusionTree: {fileID: 11400000, guid: 41c10681a1333eb4a8b7a252d0c9d8dd, type: 2}
-  IngredientPrefab: {fileID: 4170072990077528222, guid: 8aad1fadd38205043978b69ab6fbeb62, type: 3}
 --- !u!212 &291137404
 SpriteRenderer:
   serializedVersion: 2
@@ -429,9 +442,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed5ebdf045c94743a412e897392dea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Process.Example.ProcessExample
-  cookingProcess: 2
   score: 17
   cooldown: 2
+--- !u!114 &291137407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291137401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8568a794eb81a4c891b77f18db08d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodProcessorComponent
+  process: 2
+--- !u!114 &291137408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291137401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ac1dfa0dd8ce94ebeadb67c7f3c78a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientFuserComponent
+  fusionTree: {fileID: 11400000, guid: 41c10681a1333eb4a8b7a252d0c9d8dd, type: 2}
+  ingredientPrefab: {fileID: 4170072990077528222, guid: 8aad1fadd38205043978b69ab6fbeb62, type: 3}
+  position: {fileID: 0}
 --- !u!1 &300768246
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,6 +825,7 @@ GameObject:
   - component: {fileID: 1269216504}
   - component: {fileID: 1269216503}
   - component: {fileID: 1269216502}
+  - component: {fileID: 1269216506}
   m_Layer: 0
   m_Name: BadKnife
   m_TagString: Untagged
@@ -804,7 +845,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed5ebdf045c94743a412e897392dea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Process.Example.ProcessExample
-  cookingProcess: 1
   score: 10
   cooldown: 2
 --- !u!61 &1269216503
@@ -927,6 +967,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1269216506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269216501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8568a794eb81a4c891b77f18db08d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodProcessorComponent
+  process: 1
 --- !u!1 &1610381747
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +993,8 @@ GameObject:
   - component: {fileID: 1610381750}
   - component: {fileID: 1610381749}
   - component: {fileID: 1610381748}
+  - component: {fileID: 1610381754}
+  - component: {fileID: 1610381753}
   m_Layer: 0
   m_Name: GoodPot
   m_TagString: Untagged
@@ -959,7 +1014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed5ebdf045c94743a412e897392dea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Process.Example.ProcessExample
-  cookingProcess: 2
   score: 64
   cooldown: 2
 --- !u!58 &1610381749
@@ -1010,8 +1064,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2857c6bac3089cd46ba52ff842e47b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Process.Example.FuseExample
-  FusionTree: {fileID: 11400000, guid: 41c10681a1333eb4a8b7a252d0c9d8dd, type: 2}
-  IngredientPrefab: {fileID: 4170072990077528222, guid: 8aad1fadd38205043978b69ab6fbeb62, type: 3}
 --- !u!212 &1610381751
 SpriteRenderer:
   serializedVersion: 2
@@ -1086,6 +1138,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1610381753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610381747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8568a794eb81a4c891b77f18db08d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodProcessorComponent
+  process: 2
+--- !u!114 &1610381754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610381747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ac1dfa0dd8ce94ebeadb67c7f3c78a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientFuserComponent
+  fusionTree: {fileID: 11400000, guid: 41c10681a1333eb4a8b7a252d0c9d8dd, type: 2}
+  ingredientPrefab: {fileID: 4170072990077528222, guid: 8aad1fadd38205043978b69ab6fbeb62, type: 3}
+  position: {fileID: 0}
 --- !u!1001 &1773463226
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace Process.Example
 {
+    [RequireComponent(typeof(IngredientFuserComponent))]
     public class FuseExample : MonoBehaviour
     {
-        public FusionTree FusionTree;
-        public GameObject IngredientPrefab;
-
         List<IngredientComponent> ingredients = new();
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -22,26 +20,11 @@ namespace Process.Example
 
                 if (ingredients.Count > 1)
                 {
-                    List<BaseIngredientData> data = new();
-                    List<IngredientRuntimeInstance> runtimeInstances = new();
-
-                    foreach(var ingredient in ingredients)
+                    if (GetComponent<IngredientFuserComponent>().TryFusing(ingredients.ToArray(), out var newIng))
                     {
-                        data.Add(ingredient.data);
-                        runtimeInstances.Add(ingredient.ingredientInstance);
-                    }
-
-                    BaseIngredientData newIng =  FusionTree.TryFusing(data.ToArray());
-
-                    if (newIng != null)
-                    {
-                        Instantiate(IngredientPrefab, transform.position, Quaternion.identity).GetComponent<IngredientComponent>()
-                        .Setup(newIng, runtimeInstances.ToArray());
-
-                        ingredients.ForEach(ing  => Destroy(ing.gameObject));
                         ingredients.Clear();
+                        ingredients.Add(newIng.GetComponent<IngredientComponent>());
                     }
-                    
                 }
             }
         }

@@ -15,7 +15,9 @@ MonoBehaviour:
   possibleFusions:
   - compositeIngredient: {fileID: 11400000, guid: 0d2545e0c88903f45be98160f70dd946, type: 2}
     components:
-    - ingredient: {fileID: 11400000, guid: ed3694dae747c7040adbea6d4e6ea75a, type: 2}
-      isRequired: 1
-    - ingredient: {fileID: 11400000, guid: 1436ce8b94501e3479dd450983cfd239, type: 2}
-      isRequired: 1
+    - {fileID: 11400000, guid: 07960a970f63fbf41a38aa609ccef0dd, type: 2}
+    - {fileID: 11400000, guid: 134b6552be7e60242bc5bc7bb05690ac, type: 2}
+  - compositeIngredient: {fileID: 11400000, guid: ed3694dae747c7040adbea6d4e6ea75a, type: 2}
+    components:
+    - {fileID: 11400000, guid: 84c9bc66b09880f4bb25631d6ab243ec, type: 2}
+    - {fileID: 11400000, guid: 134b6552be7e60242bc5bc7bb05690ac, type: 2}

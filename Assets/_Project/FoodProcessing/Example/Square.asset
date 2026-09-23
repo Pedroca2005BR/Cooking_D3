@@ -12,34 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
   m_Name: Square
   m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
-  Name: Square
+  baseName: 
   baseSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  processes:
-  - changeName: 0
-    Name: 
-    process: 1
-    minRange: 0
-    maxRange: 30
-    newSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-    newColor: {r: 1, g: 0.85870224, b: 0, a: 1}
-  - changeName: 0
-    Name: 
-    process: 1
-    minRange: 31
-    maxRange: 90
-    newSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-    newColor: {r: 0, g: 1, b: 0, a: 1}
-  - changeName: 1
-    Name: Hexagon
-    process: 2
-    minRange: 31
-    maxRange: 90
-    newSprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
-    newColor: {r: 0, g: 0, b: 0, a: 1}
-  - changeName: 1
-    Name: Heaxagon
-    process: 2
-    minRange: 0
-    maxRange: 30
-    newSprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
-    newColor: {r: 1, g: 1, b: 1, a: 1}
+  possibleConversions:
+  - processNeeded: 1
+    minimumScoreNeeded: 0
+    newIngredientData: {fileID: 11400000, guid: 4021f7fdb014a504f8d3e6226a0fc4e5, type: 2}

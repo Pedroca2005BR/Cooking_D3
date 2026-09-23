@@ -12,6 +12,7 @@ public class IngredientComponent : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        ingredientInstance = new();
     }
 
 
@@ -19,7 +20,6 @@ public class IngredientComponent : MonoBehaviour
     {
         // Setting up basic info
         data = ingredientData;
-        ingredientInstance = new(ingredientData);
         ingredientInstance.SetBaseComponents(baseComponents);
 
         // Visuals
@@ -32,13 +32,16 @@ public class IngredientComponent : MonoBehaviour
         ingredientInstance.AddProcessScore(process, score);
 
         // Tries to update the sprite
-        if (data.TryGetNewSprite(process, score, out Sprite spr, out Color col))
+        if (data.TryTransforming(process, score, out var newData))
         {
-            Debug.Log("Found New Sprite");
-
-            spriteRenderer.sprite = spr;
-            spriteRenderer.color = col;
+            if (newData != null)
+            {
+                Setup(newData);
+            }
         }
-        Debug.Log("Ended AddProcess");
+        else
+        {
+            Debug.LogError($"No match transformation for process ({process.ToString()} => {data.baseName})");
+        }
     }
 }

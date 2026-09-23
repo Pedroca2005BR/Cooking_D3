@@ -5,41 +5,27 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "BaseIngredientData", menuName = "Scriptable Objects/BaseIngredientData")]
 public class BaseIngredientData : ScriptableObject
 {
-    public string Name;
+    public string baseName;
     public Sprite baseSprite;
 
-    [Tooltip("When an ingredient goes through a process, they can change appearance.")]
-    public List<TransformationData> processes;
+    [Tooltip("When an ingredient goes through a process, they can convert into another one.")]
+    public List<IngredientConversionData> possibleConversions;
 
-    public bool TryGetNewSprite(CookingProcess process, int score, out Sprite sprite, out Color color)
+    public bool TryTransforming(CookingProcess process, int score, out BaseIngredientData newData)
     {
-        var data = GetTransformationDataInRange(process, score);
-        if (data == null)
+        newData = null;
+
+        foreach (IngredientConversionData data in possibleConversions)
         {
-            sprite = null;
-            color = Color.white;
-            return false;
-        }
-
-        sprite = data.newSprite;
-        color = data.newColor;
-
-        return true;
-    }
-
-    private TransformationData GetTransformationDataInRange(CookingProcess process, int score)
-    {
-        foreach (TransformationData data in processes)
-        {
-            if (data.process == process)
+            if (data.processNeeded == process && data.minimumScoreNeeded <= score)
             {
-                if (data.minRange <= score && data.maxRange >= score)
-                {
-                    return data;
-                }
+                
+                newData = data.newIngredientData;
+                return true;
+               
             }
         }
-        
-        return null;
+
+        return false;
     }
 }

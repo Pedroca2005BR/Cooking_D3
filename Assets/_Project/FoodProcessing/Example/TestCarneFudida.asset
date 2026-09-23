@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
-  m_Name: Triangle
+  m_Name: TestCarneFudida
   m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
   baseName: 
-  baseSprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  possibleConversions:
-  - processNeeded: 1
-    minimumScoreNeeded: 0
-    newIngredientData: {fileID: 11400000, guid: 134b6552be7e60242bc5bc7bb05690ac, type: 2}
+  baseSprite: {fileID: 21300000, guid: 4d47bd698375f804ca54a9446758f6f3, type: 3}
+  possibleConversions: []
