@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 399420314828734396}
   - component: {fileID: 931709129588417577}
   - component: {fileID: 754588391727650248}
+  - component: {fileID: 3649293794127498465}
   m_Layer: 0
   m_Name: Taubua
   m_TagString: Untagged
@@ -526,6 +527,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba1997385f251f4380afb0f307bb608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TabuaDeCorte
+--- !u!114 &3649293794127498465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448037992097508195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8568a794eb81a4c891b77f18db08d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodProcessorComponent
+  process: 1
 --- !u!1 &8923924779415974105
 GameObject:
   m_ObjectHideFlags: 0

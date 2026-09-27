@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(FoodProcessorComponent))]
 public class PanelaController : MonoBehaviour, IReceberIngrediente
 {
     public event Action<float> OnProcesso; //evento para atualizar a UI
@@ -13,7 +14,14 @@ public class PanelaController : MonoBehaviour, IReceberIngrediente
     [SerializeField] private IngredienteFogao ingrediente; //ingrediente interagindo com a panela
 
     private bool estaCozinhando = false;
+    private FoodProcessorComponent processador; //referencia para o componente de processos
+    private IngredientFuserComponent fuser; //referencia para o componente de fusao
 
+    private void Awake() {
+        processador = GetComponent<FoodProcessorComponent>();
+        fuser = GetComponent<IngredientFuserComponent>();
+    }
+    
     private void Update() { 
         if(noFogo && ingrediente != null) { 
             ingrediente.RecebeCalor(Time.deltaTime); //logica de contagem de tempo em processo
@@ -49,21 +57,63 @@ public class PanelaController : MonoBehaviour, IReceberIngrediente
     }
 
     public bool AceitaIngrediente(GameObject objeto) {
-        //so aceita se for um ingrediente e se a panela estiver vazia
-        return objeto.GetComponent<IngredienteFogao>() != null && ingrediente == null;
+        IngredienteFogao novoIngrediente = objeto.GetComponent<IngredienteFogao>();
+        if (novoIngrediente == null) return false;
+
+        // 1. Se a panela estiver vazia, aceita o ingrediente
+        if (ingrediente == null) return true;
+
+        // 2. Se já tiver um ingrediente, pergunta ao Fuser se os dois podem ser fundidos
+        if (fuser != null && novoIngrediente != ingrediente) {
+            IngredientComponent[] paraTestar = new IngredientComponent[] {
+                ingrediente.ingComponent,
+                novoIngrediente.ingComponent
+            };
+            return fuser.CanFuse(paraTestar);
+        }
+
+        return false;
     }
 
     public void ReceberIngredienteSolto(GameObject objeto) {
         IngredienteFogao novoIngrediente = objeto.GetComponent<IngredienteFogao>();
-        if(novoIngrediente != null) {
+        if (novoIngrediente == null) return;
+
+        // Caso 1: Panela vazia -> Recebe o 1º ingrediente
+        if (ingrediente == null) {
             ingrediente = novoIngrediente;
+            ingrediente.DefinirProcessador(processador); //passa o processador
             Verificar();
             Debug.Log("Panela recebeu ingrediente");
+        }
+        // Caso 2: Panela já tem ingrediente -> Funde os dois
+        else if (fuser != null && novoIngrediente != ingrediente) {
+            IngredientComponent[] paraFundir = new IngredientComponent[] {
+                ingrediente.ingComponent,
+                novoIngrediente.ingComponent
+            };
+
+            if (fuser.TryFusing(paraFundir, out GameObject objetoFundido)) {
+                ingrediente = objetoFundido.GetComponent<IngredienteFogao>();
+                if (ingrediente != null) {
+                    ingrediente.DefinirProcessador(processador);
+                }
+
+                // Avisa o DropSystem do novo objeto fundido que ele está dentro desta panela!
+                DropSystem dropNovo = objetoFundido.GetComponent<DropSystem>();
+                if (dropNovo != null) {
+                    dropNovo.DefinirBancadaAtual(this, this.transform);
+                }
+
+                Verificar();
+                Debug.Log("Ingredientes fundidos na panela!");
+            }
         }
     }
 
     public void RemoverIngrediente(GameObject objeto) {
         if(ingrediente != null && objeto == ingrediente.gameObject) {
+            ingrediente.DefinirProcessador(null); // Limpa o processador
             ingrediente = null;
             Verificar();
             Debug.Log("Ingrediente removido da panela");

@@ -11,18 +11,32 @@ public class IngredienteFogao : MonoBehaviour
     private EstadoCozimento estado = EstadoCozimento.Cru;
     public bool jaFoiCortado = false;
 
+    [Header("Notas Provisorias")]
+    [SerializeField] private int notaCozido = 100;
+    [SerializeField] private int notaQueimado = 0;
+
     private SpriteRenderer spriteIng;
+    private FoodProcessorComponent processoAtual;
+    public IngredientComponent ingComponent { get; private set;}
 
     private void Awake() {
         spriteIng = GetComponent<SpriteRenderer>();
+        ingComponent = GetComponent<IngredientComponent>();
+    }
 
-        if(dadosBase != null && dadosBase.spriteCru != null) {
-            spriteIng.sprite = dadosBase.spriteCru;
+    private void Start() {
+        if(ingComponent.data != null) {
+            ingComponent.Setup(ingComponent.data);
+            AjustarColisor();
         }
     }
 
+    public void DefinirProcessador(FoodProcessorComponent processo) {
+        processoAtual = processo;
+    }
+
     public void RecebeCalor(float tempoNoFogo) {
-        if(estado == EstadoCozimento.Queimado) return;
+        if(estado == EstadoCozimento.Queimado || dadosBase == null) return;
 
         tempoCozido += tempoNoFogo;
 
@@ -35,19 +49,35 @@ public class IngredienteFogao : MonoBehaviour
 
     private void FicarPronto() {
         estado = EstadoCozimento.Cozido;
-        spriteIng.sprite = dadosBase.spriteCozido;
+        if(processoAtual != null) {
+            int nota = CalcularNota();
+            processoAtual.ProcessIngredient(ingComponent, nota);
+            AjustarColisor();
+        }
     }
 
     private void FicarQueimado() {
         estado = EstadoCozimento.Queimado;
-        spriteIng.sprite = dadosBase.spriteQueimado;
+        if(processoAtual != null) {
+            int nota = CalcularNota();
+            processoAtual.ProcessIngredient(ingComponent, nota);
+            AjustarColisor();
+        }    
     }
 
-    private void AjustarColisor()
+    private int CalcularNota() {
+        //Implementar calculo da nota do processo
+
+        if(estado == EstadoCozimento.Cozido) return notaCozido;
+        if(estado == EstadoCozimento.Queimado) return notaQueimado;
+        return 0;
+    }
+
+    public void AjustarColisor()
     {
         //ajusta o tamanho do colizor de acordo com o sprite
         BoxCollider2D col = GetComponent<BoxCollider2D>();
-        if(col != null && spriteIng.sprite != null) 
+        if(col != null && spriteIng != null && spriteIng.sprite != null) 
         {
             col.size = spriteIng.sprite.bounds.size;
         }
