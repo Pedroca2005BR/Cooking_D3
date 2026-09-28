@@ -1,5 +1,8 @@
+using Pedroca2005BR.Utilities;
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -12,6 +15,9 @@ public class DraggableComponent : MonoBehaviour, IPointerUpHandler, IPointerDown
     Vector3 velocity = Vector3.zero;
     Vector3 dragTargetPosition;
     bool isBeingDragged;
+
+    public Action<bool> OnGrabbed;
+    
 
 
 
@@ -65,10 +71,12 @@ public class DraggableComponent : MonoBehaviour, IPointerUpHandler, IPointerDown
     public void StartDragging()
     {
         isBeingDragged = true;
+        OnGrabbed.Invoke(true);
     }
 
     public void StopDragging()
     {
         isBeingDragged = false;
+        OnGrabbed.Invoke(false);
     }
 }
