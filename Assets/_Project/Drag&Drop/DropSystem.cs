@@ -14,6 +14,23 @@ public class DropSystem : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     
     private IReceberIngrediente bancadaAtual; //guarda a referencia de onde o objeto esta
 
+    // Permite vincular o objeto a uma bancada quando ele nasce por fusao (Instantiate)
+    public void DefinirBancadaAtual(IReceberIngrediente novaBancada, Transform transformAlvo)
+    {
+        bancadaAtual = novaBancada;
+
+        if (tornarFilhoDoAlvo && transformAlvo != null)
+        {
+            transform.SetParent(transformAlvo);
+        }
+
+        if (imantarNoCentro && transformAlvo != null)
+        {
+            if (tornarFilhoDoAlvo) transform.localPosition = Vector3.zero;
+            else transform.position = transformAlvo.position;
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         //Se o objeto estiver em uma bancada e o jogador clicou para pega-lo,
@@ -74,7 +91,7 @@ public class DropSystem : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         //verifica se o objeto da qual esta saindo eh o mesmo q estava
         //se for, limpa a memoria, para evitar q esse objeto fique puxando novamente o item
-        if (alvosPossiveis.Contains(outro.gameObject));
+        if (alvosPossiveis.Contains(outro.gameObject))
         {
             alvosPossiveis.Remove(outro.gameObject);
         }

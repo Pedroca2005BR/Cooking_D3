@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
   m_Name: TestCarneCozida
   m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
-  baseName: 
+  baseName: Carne_Cozida
   baseSprite: {fileID: 21300000, guid: 660f3b5a5afa4d849a1a1da2af8be50a, type: 3}
   possibleConversions:
   - processNeeded: 2
-    minimumScoreNeeded: 30
+    minimumScoreNeeded: 0
     newIngredientData: {fileID: 11400000, guid: 84c9bc66b09880f4bb25631d6ab243ec, type: 2}

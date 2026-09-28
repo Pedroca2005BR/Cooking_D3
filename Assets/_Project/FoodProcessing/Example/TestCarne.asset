@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
   m_Name: TestCarne
   m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
-  baseName: afsfs
+  baseName: Carne_Crua
   baseSprite: {fileID: 21300000, guid: 8779da73f8ddf9d43a9d493ea23aaa34, type: 3}
   possibleConversions:
   - processNeeded: 2

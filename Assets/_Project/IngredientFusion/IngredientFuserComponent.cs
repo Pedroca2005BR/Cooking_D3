@@ -10,6 +10,20 @@ public class IngredientFuserComponent : MonoBehaviour
     [SerializeField] GameObject ingredientPrefab;
     [SerializeField] Transform position;
 
+    public bool CanFuse(IngredientComponent[] ingredients) //método para verificar se a fusao existe, sem destruir ou instanciar objetos
+    {
+        if (fusionTree == null) return false;
+
+        BaseIngredientData[] ingInfo = new BaseIngredientData[ingredients.Length];
+
+        for (int i = 0; i < ingredients.Length; i++)
+        {
+            ingInfo[i] = ingredients[i].data;
+        }
+
+        return fusionTree.TryFusing(ingInfo) != null;
+    }
+
     public bool TryFusing(IngredientComponent[] ingredients, out GameObject fusedIngredient)
     {
         BaseIngredientData[] ingInfo = new BaseIngredientData[ingredients.Length];
