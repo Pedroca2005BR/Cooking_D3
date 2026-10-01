@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class IngredientRuntimeInstance
 {
+    public BaseIngredientData Data { get; set; }
     public Dictionary<CookingProcess, int> ProcessScores { get; private set; } = new();
     public List<IngredientRuntimeInstance> BaseComponents { get; private set; } = new();
 

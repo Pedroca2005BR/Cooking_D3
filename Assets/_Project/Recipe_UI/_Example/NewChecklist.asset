@@ -22,3 +22,5 @@ MonoBehaviour:
   - textToShow: Now I need that beef!
     ingredient: {fileID: 11400000, guid: 4021f7fdb014a504f8d3e6226a0fc4e5, type: 2}
     amount: 1
+  perfectIngredients:
+  - {fileID: 0}

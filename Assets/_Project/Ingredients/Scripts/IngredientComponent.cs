@@ -35,6 +35,7 @@ public class IngredientComponent : MonoBehaviour
         // Setting up basic info
         data = ingredientData;
         ingredientInstance.SetBaseComponents(baseComponents);
+        ingredientInstance.Data = data;
 
         // Visuals
         spriteRenderer.sprite = data.baseSprite;

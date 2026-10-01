@@ -1,9 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewChecklist", menuName = "Scriptable Objects/RecipeSO")]
 public class RecipeSO : ScriptableObject
 {
     public StepData[] howToMakeChecklist;
+
+    public List<IdealIngredientData> perfectIngredients;
 }
 
 [System.Serializable]
