@@ -4,7 +4,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class StepComponent : MonoBehaviour
 {
@@ -20,6 +19,7 @@ public class StepComponent : MonoBehaviour
     public bool IsCompleted {  get; private set; }
     int quantity = 0;
     Color originalColor;
+    string originalText;
 
     public void Setup(StepData data)
     {
@@ -29,50 +29,48 @@ public class StepComponent : MonoBehaviour
         // Visuals
         toggle.isOn = false;
         textMesh.text = data.textToShow;
-
-        // Events
-        SubscribeToEvents();
+        originalColor = textMesh.color;
+        originalText = textMesh.text;
     }
 
-    private void SubscribeToEvents()
+    // When the player adds an ingredient, this method should be called to update the quantity and check if the step is completed.
+    // If the step is already completed, it just adds the amount.
+    public void UpdateQuantity(int qtdAdded)
     {
-        EventManager.Subscribe(EventConstantNames.INGREDIENT_CREATED, OnIngredientCreated);
-        EventManager.Subscribe(EventConstantNames.INGREDIENT_CONSUMED, OnIngredientConsumed);
-    }
-
-    private void OnIngredientCreated(object obj)
-    {
-        // Only receives FoodEvents
-        IngredientEventData ingredient = (IngredientEventData)obj;
-
-        if (ingredient != null)
+        quantity += qtdAdded;
+        if (quantity >= data.amount && !IsCompleted)
         {
-            if (ingredient.ingredientData == data.ingredient)
-            {
-                quantity++;
-            }
-        }
-
-        if (quantity >= data.amount)
-        {
-            CheckMark();
+            SetStepCompleted(true);
         }
     }
 
-    public void CheckMark(bool positive = true)
+    public bool TryToUnmarkStep()
     {
-        if (positive)
+        if (quantity < data.amount && IsCompleted)
+        {
+            SetStepCompleted(false);
+            return true;
+        }
+
+        return false;
+    }
+
+    public void SetStepCompleted(bool completed)
+    {
+        if (completed)
         {
             StartCoroutine(StrikeTextCoroutine());
-            originalColor = textMesh.color;
             textMesh.color = completedColor;
             toggle.isOn = true;
+            IsCompleted = true;
         }
         else
         {
-            // TODO: unstrike
+            StopAllCoroutines();
+            textMesh.text = originalText;
             textMesh.color = originalColor;
             toggle.isOn = false;
+            IsCompleted = false;
         }
     }
 
@@ -89,31 +87,6 @@ public class StepComponent : MonoBehaviour
             textMesh.text = $"<s>{before}</s>{after}";
 
             yield return new WaitForSeconds(strikethroughCooldown);
-        }
-    }
-
-    private void OnDisable()
-    {
-        EventManager.Unsubscribe(EventConstantNames.INGREDIENT_CREATED, OnIngredientCreated);
-        EventManager.Unsubscribe(EventConstantNames.INGREDIENT_CONSUMED, OnIngredientConsumed);
-    }
-
-    private void OnIngredientConsumed(object obj)
-    {
-        // Only receives FoodEvents
-        IngredientEventData ingredient = (IngredientEventData)obj;
-
-        if (ingredient != null)
-        {
-            if (ingredient.ingredientData == data.ingredient)
-            {
-                quantity--;
-
-                if (quantity < 0)
-                {
-                    Debug.LogError($"More ingredients beign consumed than created! Check Event Calls for {data.ingredient.baseName}!");
-                }
-            }
         }
     }
 }

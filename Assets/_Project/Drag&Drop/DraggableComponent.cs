@@ -1,8 +1,5 @@
-using Pedroca2005BR.Utilities;
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 

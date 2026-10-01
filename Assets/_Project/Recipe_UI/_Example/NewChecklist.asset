@@ -16,3 +16,9 @@ MonoBehaviour:
   - textToShow: Make some carrots, boy!
     ingredient: {fileID: 11400000, guid: 134b6552be7e60242bc5bc7bb05690ac, type: 2}
     amount: 2
+  - textToShow: Boil at least one too!!
+    ingredient: {fileID: 11400000, guid: ed3694dae747c7040adbea6d4e6ea75a, type: 2}
+    amount: 1
+  - textToShow: Now I need that beef!
+    ingredient: {fileID: 11400000, guid: 4021f7fdb014a504f8d3e6226a0fc4e5, type: 2}
+    amount: 1
