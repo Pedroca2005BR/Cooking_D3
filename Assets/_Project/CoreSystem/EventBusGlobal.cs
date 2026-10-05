@@ -2,10 +2,6 @@ using UnityEngine;
 using System;
 
 public static class EventBusGlobal{
-    /*SISTEMA DE TEMPO
-    [-------------------------------------------------------]*/
-
-
     //evento que vai passar o tempo restante
     public static event Action<int> OnTempoAtual;
     //evento que vai avisar que acabou o tempo

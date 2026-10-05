@@ -61,15 +61,13 @@ public class PanelaController : MonoBehaviour, IReceberIngrediente
         if (novoIngrediente == null) return false;
 
         // 1. Se a panela estiver vazia, aceita o ingrediente
-        if (ingrediente == null) return true;
+        if (ingrediente == null) {
+            return ValidadorDeReceita.AceitaProcesso(novoIngrediente.ingComponent, processador.ProcessoAtual);
+        }
 
         // 2. Se já tiver um ingrediente, pergunta ao Fuser se os dois podem ser fundidos
         if (fuser != null && novoIngrediente != ingrediente) {
-            IngredientComponent[] paraTestar = new IngredientComponent[] {
-                ingrediente.ingComponent,
-                novoIngrediente.ingComponent
-            };
-            return fuser.CanFuse(paraTestar);
+            return ValidadorDeReceita.AceitaFusao(fuser, ingrediente.ingComponent, novoIngrediente.ingComponent);
         }
 
         return false;

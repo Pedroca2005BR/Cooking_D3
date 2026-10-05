@@ -23,8 +23,13 @@ public class TabuaDeCorte : MonoBehaviour, IReceberIngrediente {
     public bool AceitaIngrediente(GameObject objeto) {
         IngredienteFogao ingrediente = objeto.GetComponent<IngredienteFogao>();
 
-        // Retorna verdadeiro se existe ingrediente a ser recebido, se ele tem dados, se ele não foi cortado e se a tábua estiver vazia
-        return (ingrediente != null && ingrediente.dadosBase != null && !ingrediente.jaFoiCortado && ingredienteAtual == null);
+        // Retorna verdadeiro se existe ingrediente a ser recebido, se ele não foi cortado e se a tábua estiver vazia
+        if (ingrediente != null && ingredienteAtual == null && !ingrediente.jaFoiCortado) {
+            // Pergunta ao validador se este ingrediente aceita ser cortado
+            return ValidadorDeReceita.AceitaProcesso(ingrediente.ingComponent, processador.ProcessoAtual);
+        }
+
+        return false;
     }
 
     public void ReceberIngredienteSolto(GameObject objeto) {

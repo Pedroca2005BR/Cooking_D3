@@ -9,6 +9,11 @@ public class DropSystem : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     public bool imantarNoCentro = true;
     public bool tornarFilhoDoAlvo = false;
 
+    //variaveis para voltar para o lugar de origem
+    private Vector3 posicaoOrigem;
+    private Transform parenteOrigem;
+    private IReceberIngrediente bancadaDeOrigem;
+
     //lista para guardar todos os objetos que o trigger esta detectando
     private List<GameObject> alvosPossiveis = new List<GameObject>();
     
@@ -33,6 +38,11 @@ public class DropSystem : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        //salva o estado inicial
+        posicaoOrigem = transform.position;
+        parenteOrigem = transform.parent;
+        bancadaDeOrigem = bancadaAtual;
+
         //Se o objeto estiver em uma bancada e o jogador clicou para pega-lo,
         //avisa a bancada para remover o ingrediente
         if(bancadaAtual != null) {
@@ -48,6 +58,8 @@ public class DropSystem : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        bool lugarValido = false;
+
         Debug.Log($"Os alvos que o sistema encontrou foram:");
         
         foreach(GameObject alvo in alvosPossiveis) {
@@ -72,7 +84,19 @@ public class DropSystem : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
                 //entrega o objeto para a bancada e salva a bancada
                 recebedor.ReceberIngredienteSolto(this.gameObject);
                 bancadaAtual = recebedor;
+                lugarValido = true;
                 break;
+            }
+        }
+
+        if (!lugarValido) {
+            transform.position = posicaoOrigem;
+            transform.SetParent(parenteOrigem);
+
+            if (bancadaDeOrigem != null) {
+                // Devolve para a memória da bancada anterior
+                bancadaDeOrigem.ReceberIngredienteSolto(this.gameObject);
+                bancadaAtual = bancadaDeOrigem;
             }
         }
     }

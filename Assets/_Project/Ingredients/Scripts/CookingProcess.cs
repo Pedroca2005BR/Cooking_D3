@@ -4,5 +4,6 @@ public enum CookingProcess
 {
     None = 0,
     Cut = 1,
-    Boil = 2
+    Boil = 2,
+    Empanar = 3
 }
