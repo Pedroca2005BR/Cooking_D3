@@ -8,4 +8,7 @@ public static class EventConstantNames
 
     public const string INGREDIENT_DROPPED = "Ingredient Dropped";  // IngredientEventData
     public const string INGREDIENT_PICKED_UP = "Ingredient Picked Up";  // IngredientEventData
+
+    public const string MOUSE_CLICK = "Mouse Click";    // transform
+    public const string MOUSE_PLACE = "Mouse Place";    // transform
 }

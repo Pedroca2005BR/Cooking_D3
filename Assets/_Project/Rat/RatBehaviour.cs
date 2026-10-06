@@ -113,6 +113,18 @@ public class RatBehaviour : MonoBehaviour
         
     }
 
+    public void Die()
+    {
+        if (hasFood)
+        {
+            desiredFood.GetComponent<IngredientComponent>().RatKilled();
+            desiredFood.SetParent(null);
+        }
+
+        // TODO: Play Death Animation
+        Destroy(gameObject);
+    }
+
 
 
     private void OnEnable()
