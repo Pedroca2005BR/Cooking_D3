@@ -21,3 +21,6 @@ MonoBehaviour:
   - processNeeded: 1
     minimumScoreNeeded: 0
     newIngredientData: {fileID: 11400000, guid: 0d2545e0c88903f45be98160f70dd946, type: 2}
+  - processNeeded: 4
+    minimumScoreNeeded: 0
+    newIngredientData: {fileID: 11400000, guid: 6f4318ec364b09a45a17cfd12ab57819, type: 2}

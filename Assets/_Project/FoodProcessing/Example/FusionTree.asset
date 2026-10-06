@@ -21,3 +21,11 @@ MonoBehaviour:
     components:
     - {fileID: 11400000, guid: 84c9bc66b09880f4bb25631d6ab243ec, type: 2}
     - {fileID: 11400000, guid: 134b6552be7e60242bc5bc7bb05690ac, type: 2}
+  - compositeIngredient: {fileID: 11400000, guid: c81ffe574e4cb6c4eae9d84e72c18f0d, type: 2}
+    components:
+    - {fileID: 11400000, guid: 4021f7fdb014a504f8d3e6226a0fc4e5, type: 2}
+    - {fileID: 11400000, guid: c49a18397c3ea23449eea022f59e3c14, type: 2}
+  - compositeIngredient: {fileID: 11400000, guid: 14fd72d0f321a5641a8d25153558f777, type: 2}
+    components:
+    - {fileID: 11400000, guid: c81ffe574e4cb6c4eae9d84e72c18f0d, type: 2}
+    - {fileID: 11400000, guid: 5d2b7cd018f14a548a3c42d3449bf90c, type: 2}
