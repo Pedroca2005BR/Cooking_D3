@@ -33,7 +33,6 @@ namespace Process.Example
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("EnterCol with "+ collision.name);
             if (collision.TryGetComponent<IngredientComponent>(out IngredientComponent ing))
             {
                 ig = ing;

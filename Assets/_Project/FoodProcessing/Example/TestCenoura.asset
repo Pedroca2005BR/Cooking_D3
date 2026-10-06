@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
   baseName: Cenoura
   baseSprite: {fileID: 1258025676275940595, guid: 4f55293e929b4424198dca41ae656666, type: 3}
-  possibleConversions: []
+  possibleConversions:
+  - processNeeded: 2
+    minimumScoreNeeded: 0
+    newIngredientData: {fileID: 11400000, guid: ed3694dae747c7040adbea6d4e6ea75a, type: 2}
