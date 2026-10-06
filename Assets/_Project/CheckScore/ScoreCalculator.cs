@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Advised to not change this class, as it is used to calculate the score of the recipe. If you want to change the scoring system, create a new class that inherits from this one and override the Calculate method.
 public static class ScoreCalculator
 {
     public const int MaxScore = 100;

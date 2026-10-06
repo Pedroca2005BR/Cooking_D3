@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// <summary>
+// This script anchors a GameObject to a specified corner of the camera's viewport, with an optional offset.
 [ExecuteAlways]
 public class CameraCornerAnchor : MonoBehaviour
 {

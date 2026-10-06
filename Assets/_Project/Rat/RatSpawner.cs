@@ -8,7 +8,7 @@ public class RatSpawner : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     public float spawnRadius = 0.5f;
     [SerializeField] GameObject ratPrefab;
-    [SerializeField] AnimationCurve ratSpawnChance;
+    [SerializeField] AnimationCurve ratSpawnChance; // This curve is used to determine the chance of spawning a rat based on the number of rats already present. The x-axis represents the ratio of current rats to max rats, and the y-axis represents the spawn chance (0 to 1).
     [SerializeField][Tooltip("Will be used to evalueate the curve.")] int maxRatAmount;
 
 
@@ -16,6 +16,18 @@ public class RatSpawner : MonoBehaviour
     List<RatBehaviour> rats = new();
     List<IngredientComponent> ingredients = new List<IngredientComponent>();
 
+
+    public void TrySpawningRat()
+    {
+        float rand = Random.value;
+        float evaluationParameter = (float)rats.Count / maxRatAmount;
+        float chance = ratSpawnChance.Evaluate(evaluationParameter);
+
+        if (rand < chance)
+        {
+            SpawnRat();
+        }
+    }
 
     void SpawnRat()
     {
@@ -45,7 +57,7 @@ public class RatSpawner : MonoBehaviour
 
 
 
-
+    // This class subscribe to many events to keep track of the ingredients in the scene. 
     private void OnEnable()
     {
         EventManager.Subscribe(EventConstantNames.INGREDIENT_CREATED, OnIngredientCreated);
@@ -66,6 +78,7 @@ public class RatSpawner : MonoBehaviour
         EventManager.Unsubscribe(EventConstantNames.INGREDIENT_PICKED_UP, OnIngredientVanished);
     }
 
+
     // When an ingredient vanishes for any reason, it gets removed from the list
     private void OnIngredientVanished(object obj)
     {
@@ -78,7 +91,7 @@ public class RatSpawner : MonoBehaviour
         }
     }
 
-    // When an ingredient appears, it gets added to the list
+    // When an ingredient appears, it gets added to the list and tries to spawn a rat
     private void OnIngredientCreated(object obj)
     {
         // Only receives FoodEvents
@@ -89,17 +102,9 @@ public class RatSpawner : MonoBehaviour
             ingredients.Add(ingredient.ingredientComponent);
         }
 
-        float rand = Random.value;
-        float evaluationParameter  = (float)rats.Count / maxRatAmount;
-        float chance = ratSpawnChance.Evaluate(evaluationParameter);
-
-        //Debug.Log($"Evaluation: {evaluationParameter} == {chance}");
-
-        if (rand < chance)
-        {
-            SpawnRat();
-        }
+        TrySpawningRat();
     }
+
 
     private void OnDrawGizmosSelected()
     {

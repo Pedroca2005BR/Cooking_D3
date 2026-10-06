@@ -8,25 +8,33 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(CameraCornerAnchor))]
 public class FlySwatter : MonoBehaviour, IInteragivel
 {
+    // Interactable Settings are third-party sourced, don't change them unless you know what you're doing
     [Header("Interactable Settings")]
-    [SerializeField] int tipoObjeto = 1;
-    [SerializeField] GameObject objetoInputPrefab;
-    [SerializeField] Vector2 inputOffset;
+    int tipoObjeto = 1;
+    [SerializeField] GameObject objetoInputPrefab; // Input key prefab
+    [SerializeField] Vector2 inputOffset;   // Offset of the input key prefab
     bool podeInteragir = true;
     GameObject objetoInputInst = null;
     bool isEquipped = false;
 
+    // Change the following values to fit the yellow box (Gizmos) to the fly swatter head
     [Header("FlySwatter Settings")]
     [SerializeField] Vector2 flySwatterHeadOffset;
     [SerializeField] Vector2 flySwatterHeadSize;
-    [SerializeField] Sprite killingSprite;
     CameraCornerAnchor cameraCornerAnchor;
-    [SerializeField] SpriteRenderer mouseSpriteRenderer;
 
+    // Change the following values to adjust the smack animation
     [Header("Tween Settings")]
     [SerializeField] float duration = 1.0f;
     Tweener anim;
     IEnumerator routine;
+
+    // The following values control special sprites for killing rats. Not implemented yet
+    [Header("Special Sprite Settings")]
+    [SerializeField] Sprite killingSprite;
+    [SerializeField] SpriteRenderer mouseSpriteRenderer;
+
+    
 
     
 
@@ -34,6 +42,19 @@ public class FlySwatter : MonoBehaviour, IInteragivel
     {
         cameraCornerAnchor = GetComponent<CameraCornerAnchor>();
     }
+    private void OnEnable()
+    {
+        EventManager.Subscribe(EventConstantNames.MOUSE_CLICK, OnClicked);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Unsubscribe(EventConstantNames.MOUSE_CLICK, OnClicked);
+        if (anim != null) transform.DOKill();
+        cameraCornerAnchor.enabled = false;
+    }
+
+    #region IInteragivel Implementation
 
     public bool PodeInteragir()
     {
@@ -46,34 +67,6 @@ public class FlySwatter : MonoBehaviour, IInteragivel
             return;
 
         TryEquip();
-    }
-
-    private void TryEquip()
-    {
-        if (isEquipped)
-        {
-            Unequip();
-        }
-        else
-        {
-            Equip();
-        }
-    }
-
-    void Unequip()
-    {
-        //podeInteragir = true;
-        Camera.main.GetComponent<Physics2DRaycaster>().enabled = true;
-        isEquipped = false;
-        cameraCornerAnchor.enabled = false;
-    }
-
-    void Equip()
-    {
-        //podeInteragir = false;
-        Camera.main.GetComponent<Physics2DRaycaster>().enabled = false;
-        isEquipped = true;
-        cameraCornerAnchor.enabled = true;
     }
 
     public void MostraInput()
@@ -98,17 +91,36 @@ public class FlySwatter : MonoBehaviour, IInteragivel
         return tipoObjeto;
     }
 
-    private void OnEnable()
+    #endregion
+
+    private void TryEquip()
     {
-        EventManager.Subscribe(EventConstantNames.MOUSE_CLICK, OnClicked);
+        if (isEquipped)
+        {
+            Unequip();
+        }
+        else
+        {
+            Equip();
+        }
     }
 
-    private void OnDisable()
+    void Unequip()
     {
-        EventManager.Unsubscribe(EventConstantNames.MOUSE_CLICK, OnClicked);
-        if (anim != null)   transform.DOKill();
+        Camera.main.GetComponent<Physics2DRaycaster>().enabled = true;
+        isEquipped = false;
+        cameraCornerAnchor.enabled = false;
     }
 
+    void Equip()
+    {
+        Camera.main.GetComponent<Physics2DRaycaster>().enabled = false; // Disabling raycasting to prevent clicking on other objects while equipped
+        isEquipped = true;
+        cameraCornerAnchor.enabled = true;
+    }
+
+
+    // Function called when the mouse is clicked. If the fly swatter is equipped and the animation isn't active, it starts the swatting animation.
     private void OnClicked(object obj)
     {
         // If theres a click action and the tween isnt active, activate it
@@ -127,6 +139,7 @@ public class FlySwatter : MonoBehaviour, IInteragivel
         }
     }
 
+    // Coroutine that handles the swatting animation using DOTween and checks for collisions with rats. It disables the camera corner anchor during the animation and re-enables it afterward.
     IEnumerator Swatting(Transform ts)
     {
         cameraCornerAnchor.enabled = false;

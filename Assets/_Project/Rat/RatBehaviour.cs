@@ -7,8 +7,8 @@ using UnityEngine.AI;
 public class RatBehaviour : MonoBehaviour
 {
     [Header("Settings")]
-    public Transform home;
-    [SerializeField] float grabDistance = 0.1f;
+    public Transform home;  // May be set on spawn
+    [SerializeField] float grabDistance = 0.1f; // The distance at which the rat can grab the food
 
     NavMeshAgent agent;
 
@@ -25,6 +25,22 @@ public class RatBehaviour : MonoBehaviour
         spawner = GetComponentInParent<RatSpawner>();
     }
 
+    // This class subscribe to events to control if the food it wants is still available or not. If not, it may go after another food.
+    private void OnEnable()
+    {
+        EventManager.Subscribe(EventConstantNames.INGREDIENT_CONSUMED, OnIngredientVanished);
+        EventManager.Subscribe(EventConstantNames.INGREDIENT_STOLEN, OnIngredientVanished);
+        EventManager.Subscribe(EventConstantNames.INGREDIENT_PICKED_UP, OnIngredientVanished);
+    }
+    private void OnDisable()
+    {
+        EventManager.Unsubscribe(EventConstantNames.INGREDIENT_CONSUMED, OnIngredientVanished);
+        EventManager.Unsubscribe(EventConstantNames.INGREDIENT_STOLEN, OnIngredientVanished);
+        EventManager.Unsubscribe(EventConstantNames.INGREDIENT_PICKED_UP, OnIngredientVanished);
+    }
+
+
+    // Mini State Machine for the rats behaviour
     private void Update()
     {
         if (hasFood)
@@ -43,20 +59,21 @@ public class RatBehaviour : MonoBehaviour
         }
     }
 
+
     private void GrabFood()
     {
-        Debug.Log($"Grabbed {desiredFood.GetComponent<IngredientComponent>().data.baseName}!");
-
-        //desiredFood.GetComponent<DraggableComponent>().enabled = false;
+        //Debug.Log($"Grabbed {desiredFood.GetComponent<IngredientComponent>().data.baseName}!");
 
         if(desiredFood.GetComponent<IngredientComponent>().TryGrabbing(this))
         {
             hasFood = true;
             desiredFood.SetParent(transform);
+            // An offset may be added here to place the food in rats mouth or something like that, for now it just stays in the center of the rat
             desiredFood.transform.position = transform.position;
         }
     }
 
+    // This method is called by the spawner to give the rat a new objective, if it doesn't have one already
     public void TryGiveObjectives(Transform objective)
     {
         if (desiredFood == null)
@@ -70,6 +87,7 @@ public class RatBehaviour : MonoBehaviour
     {
         agent.SetDestination(home.position);
 
+        // When the rat gets home, it drops the food and goes back to the spawner to get a new objective. If it can't, it will "deactivate" itself and wait for a new objective to be given.
         if (Vector2.Distance(home.position, transform.position) < spawner.spawnRadius)
         {
             if (hasFood && desiredFood != null)
@@ -113,6 +131,7 @@ public class RatBehaviour : MonoBehaviour
         
     }
 
+    // Called to cleanly kill the rat, if it has food, it will drop it and notify the ingredient that it was killed by a rat.
     public void Die()
     {
         if (hasFood)
@@ -127,19 +146,7 @@ public class RatBehaviour : MonoBehaviour
 
 
 
-    private void OnEnable()
-    {
-        EventManager.Subscribe(EventConstantNames.INGREDIENT_CONSUMED, OnIngredientVanished);
-        EventManager.Subscribe(EventConstantNames.INGREDIENT_STOLEN, OnIngredientVanished);
-        EventManager.Subscribe(EventConstantNames.INGREDIENT_PICKED_UP, OnIngredientVanished);
-    }
-
-    private void OnDisable()
-    {
-        EventManager.Unsubscribe(EventConstantNames.INGREDIENT_CONSUMED, OnIngredientVanished);
-        EventManager.Unsubscribe(EventConstantNames.INGREDIENT_STOLEN, OnIngredientVanished);
-        EventManager.Unsubscribe(EventConstantNames.INGREDIENT_PICKED_UP, OnIngredientVanished);
-    }
+   
 
     // When an ingredient vanishes for any reason, it gets removed from the list
     private void OnIngredientVanished(object obj)
