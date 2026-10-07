@@ -1139,14 +1139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4a86b196eb3d449a77ffeb120de8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlySwatter
-  tipoObjeto: 1
   objetoInputPrefab: {fileID: 8333296955410669447, guid: a3492e95bab322c40a516909ea509200, type: 3}
   inputOffset: {x: -0.87, y: 1.26}
   flySwatterHeadOffset: {x: 0, y: 3.38}
   flySwatterHeadSize: {x: 1.37, y: 1.86}
+  duration: 0.4
   killingSprite: {fileID: 0}
   mouseSpriteRenderer: {fileID: 487586938}
-  duration: 0.4
 --- !u!4 &882813121
 Transform:
   m_ObjectHideFlags: 0
