@@ -6,7 +6,7 @@ public class RecipeSO : ScriptableObject
 {
     public StepData[] howToMakeChecklist;
 
-    public List<IdealIngredientData> perfectIngredients;
+    public IdealIngredientData perfectDish;
 }
 
 [System.Serializable]

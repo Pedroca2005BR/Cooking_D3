@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7798c3ca1339064196ef7eb0db9f2c4, type: 3}
-  m_Name: sasa
-  m_EditorClassIdentifier: Assembly-CSharp::RecipeSO
-  howToMakeChecklist: []
-  perfectDish: {fileID: 11400000, guid: d7d42091be2b86b4a9fde958358a7bb6, type: 2}
+  m_Script: {fileID: 11500000, guid: 81dd4bb8cb7acfe4c893941233eb6a69, type: 3}
+  m_Name: RecipeDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeDatabase
+  recipes:
+  - {fileID: 11400000, guid: 1052df060832a6b40aa9d1a470a70271, type: 2}
