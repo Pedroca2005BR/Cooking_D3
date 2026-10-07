@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // Advised to not change this class, as it is used to calculate the score of the recipe. If you want to change the scoring system, create a new class that inherits from this one and override the Calculate method.
@@ -54,5 +55,19 @@ public static class ScoreCalculator
         }
 
         return (diff, max);
+    }
+
+    public static string Dump(IngredientRuntimeInstance i, int indent = 0)
+    {
+        string pad = new string(' ', indent * 2);
+        if (i == null) return pad + "(null)\n";
+
+        string name = i.Data != null ? i.Data.baseName : "<Data NULL>";
+        string scores = string.Join(", ", i.ProcessScores.Select(kv => $"{kv.Key}={kv.Value}"));
+
+        var sb = new System.Text.StringBuilder();
+        sb.AppendLine($"{pad}{name} [{scores}]");
+        foreach (var c in i.BaseComponents) sb.Append(Dump(c, indent + 1));
+        return sb.ToString();
     }
 }

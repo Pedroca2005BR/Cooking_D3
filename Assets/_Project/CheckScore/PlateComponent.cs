@@ -27,8 +27,15 @@ public class PlateComponent : MonoBehaviour
             if (fuser.TryFusing(ingredientsOnPlate.ToArray(), out var fused))
             {
                 ingredientsOnPlate.Clear();
-                ingredientsOnPlate.Add(fused.GetComponent<IngredientComponent>());
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<IngredientComponent>(out var ingredient))
+        {
+            ingredientsOnPlate.Remove(ingredient);
         }
     }
 
@@ -40,6 +47,9 @@ public class PlateComponent : MonoBehaviour
             Debug.LogWarning("No recipe found. Cannot deliver.");
             return;
         }
+
+        // Remove ingredientes que foram destruídos enquanto estavam no prato
+        ingredientsOnPlate.RemoveAll(i => i == null);
 
         List<IngredientRuntimeInstance> ingredientInstances = new List<IngredientRuntimeInstance>();
         foreach (var ingredient in ingredientsOnPlate)
@@ -58,7 +68,7 @@ public class PlateComponent : MonoBehaviour
         // Calculate score based on the recipe and ingredients on the plate
         float score = ScoreCalculator.Calculate(actual, recipe.perfectDish);
 
-        Debug.Log($"Score for the delivered dish: {score}");
+        Debug.Log(ScoreCalculator.Dump(actual));
 
         // Invoke the event to notify listeners about the score
         OnScoreCalculated?.Invoke(score);

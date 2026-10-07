@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ac1dfa0dd8ce94ebeadb67c7f3c78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientFuserComponent
-  fusionTree: {fileID: 0}
+  fusionTree: {fileID: 11400000, guid: 380f6c6f6a6e76e499e40ef443d5f967, type: 2}
   ingredientPrefab: {fileID: 4170072990077528222, guid: 8aad1fadd38205043978b69ab6fbeb62, type: 3}
   position: {fileID: 0}
 --- !u!1 &380243468
