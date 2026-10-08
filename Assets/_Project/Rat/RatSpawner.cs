@@ -7,21 +7,62 @@ public class RatSpawner : MonoBehaviour
     [Header("Settings")]
     [SerializeField] Transform spawnPoint;
     public float spawnRadius = 0.5f;
-    [SerializeField] GameObject ratPrefab;
+    [SerializeField] RatSpawnData[] ratPrefabs;
     [SerializeField] AnimationCurve ratSpawnChance; // This curve is used to determine the chance of spawning a rat based on the number of rats already present. The x-axis represents the ratio of current rats to max rats, and the y-axis represents the spawn chance (0 to 1).
     [SerializeField][Tooltip("Will be used to evalueate the curve.")] int maxRatAmount;
+
+    [Header("Sprites")]
+    [SerializeField] Sprite empty;
+    [SerializeField] Sprite eyesInside;
+    SpriteRenderer spriteRenderer;
+    [SerializeField] float checkCooldown = 10f;
+    [SerializeField]
+    [Range(0f, 1f)] float eyesChance = 0.5f;
+    [SerializeField]
+    [Range(0f, 1f)] float increaseInSpawnChance = 0.2f;
+    float checkTimer = 0f;
 
 
 
     List<RatBehaviour> rats = new();
     List<IngredientComponent> ingredients = new List<IngredientComponent>();
 
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = empty;
+    }
+
+    private void Update()
+    {
+        checkTimer += Time.deltaTime;
+
+        if (checkTimer >= checkCooldown)
+        {
+            checkTimer = 0f;
+            float rand = Random.value;
+            if (rand < eyesChance)
+            {
+                spriteRenderer.sprite = eyesInside;
+            }
+            else
+            {
+                spriteRenderer.sprite = empty;
+            }
+        }
+    }
 
     public void TrySpawningRat()
     {
         float rand = Random.value;
         float evaluationParameter = (float)rats.Count / maxRatAmount;
         float chance = ratSpawnChance.Evaluate(evaluationParameter);
+
+        // Increase the chance based on sprite
+        if (spriteRenderer.sprite == eyesInside)
+        {
+            chance += increaseInSpawnChance;
+        }
 
         if (rand < chance)
         {
@@ -31,7 +72,16 @@ public class RatSpawner : MonoBehaviour
 
     void SpawnRat()
     {
-        var rat = Instantiate(ratPrefab, spawnPoint.position, Quaternion.identity, transform).GetComponent<RatBehaviour>();
+        for(int i = 0; i < ratPrefabs.Length; i++)
+        {
+            float rand = Random.value;
+            if (rand < ratPrefabs[i].spawnChance)
+            {
+                break;
+            }
+        }
+
+        var rat = Instantiate(ratPrefabs[0].ratPrefab, spawnPoint.position, Quaternion.identity, transform).GetComponent<RatBehaviour>();
         rat.home = spawnPoint;
         rats.Add(rat);
         GiveObjectives();
@@ -111,4 +161,11 @@ public class RatSpawner : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
+}
+
+[System.Serializable]
+public struct RatSpawnData
+{
+    public GameObject ratPrefab;
+    [Range(0f, 1f)] public float spawnChance;
 }

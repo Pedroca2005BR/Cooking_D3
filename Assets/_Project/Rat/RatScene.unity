@@ -2078,11 +2078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5402126189722473476, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.03
       objectReference: {fileID: 0}
     - target: {fileID: 5402126189722473476, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.91
       objectReference: {fileID: 0}
     - target: {fileID: 5402126189722473476, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2115,6 +2115,26 @@ PrefabInstance:
     - target: {fileID: 5402126189722473476, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
+      propertyPath: empty
+      value: 
+      objectReference: {fileID: -3524994361574451787, guid: 9d35d6114666d4b4cacf8fb91d55ec3a, type: 3}
+    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
+      propertyPath: eyesInside
+      value: 
+      objectReference: {fileID: 3563095082158243921, guid: 01a8230bc26cdbb46b2a49b32c2b4374, type: 3}
+    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
+      propertyPath: ratPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
+      propertyPath: ratPrefabs.Array.data[0].ratPrefab
+      value: 
+      objectReference: {fileID: 2988969586305166960, guid: ad58e12dd50fdd2408ec2cc0c277ac9e, type: 3}
+    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
+      propertyPath: ratPrefabs.Array.data[0].spawnChance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
       propertyPath: ratSpawnChance.m_Curve.Array.data[0].time

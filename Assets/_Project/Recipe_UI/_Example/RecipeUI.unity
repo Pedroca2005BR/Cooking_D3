@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497f66297c98e0648bf29e86ca40b140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StepByStepChecklist
-  checkListData: {fileID: 11400000, guid: 3da75106e19be4d418dccb0c47f9b959, type: 2}
+  checkListData: {fileID: 11400000, guid: 77e34a53fe8eb1a4aba3b3cc82e29093, type: 2}
   layoutGroup: {fileID: 2042512193}
   stepPrefab: {fileID: 3908771780564892786, guid: f60fbddf642be3c448c3afb3cd9f6789, type: 3}
 --- !u!1 &2109692025

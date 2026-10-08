@@ -79,7 +79,7 @@ public class StepByStepChecklist : MonoBehaviour
     {
         EventManager.Unsubscribe(EventConstantNames.INGREDIENT_CREATED, OnIngredientCreated);
         EventManager.Unsubscribe(EventConstantNames.INGREDIENT_CONSUMED, OnIngredientConsumed);
-        EventManager.Subscribe(EventConstantNames.INGREDIENT_STOLEN, OnIngredientStolen);
+        EventManager.Unsubscribe(EventConstantNames.INGREDIENT_STOLEN, OnIngredientStolen);
 
     }
 
