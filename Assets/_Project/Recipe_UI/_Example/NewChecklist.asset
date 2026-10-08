@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7798c3ca1339064196ef7eb0db9f2c4, type: 3}
   m_Name: NewChecklist
   m_EditorClassIdentifier: Assembly-CSharp::RecipeSO
-  ingredientesNecessarios: []
+  ingredientesNecessarios:
+  - textToShow: 
+    ingredient: {fileID: 0}
+    amount: 0
   howToMakeChecklist:
   - textToShow: Make some carrots, boy!
     ingredient: {fileID: 11400000, guid: 134b6552be7e60242bc5bc7bb05690ac, type: 2}
