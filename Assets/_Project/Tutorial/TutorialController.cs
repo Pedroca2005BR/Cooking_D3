@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class TutorialController : MonoBehaviour
 {
     [Header("Rules Reference")]
-    [SerializeField] RulesObject rules;
+    [SerializeField] RecipeDatabase rules;
 
     [Header("Tutorial Steps")]
     [SerializeField] TutorialObjectBase[] tutorialSteps;
@@ -18,10 +18,9 @@ public class TutorialController : MonoBehaviour
         }
 
         currentStepIndex = 0;
-        if (rules.gameMode == GameMode.Tutorial)
-        {
-            NextStep();
-        }
+        
+        NextStep();
+        
     }
 
     public void NextStepByUI(InputAction.CallbackContext context)
@@ -32,12 +31,6 @@ public class TutorialController : MonoBehaviour
 
     public void NextStep()
     {
-        // Checks if we're still in tutorial mode before proceeding
-        if (rules.gameMode != GameMode.Tutorial)
-        {
-            Debug.LogWarning("Not in tutorial mode. Cannot proceed to next step.");
-            return;
-        }
 
         if (currentStepIndex > 0)
         {
@@ -63,17 +56,6 @@ public class TutorialController : MonoBehaviour
 
     public void EndTutorial()
     {
-        rules.gameMode = GameMode.Classic;
         PlayerPrefs.SetInt("HasPlayedBefore", 1);
-    }
-
-    public void EnterTutorialMode()
-    {
-        rules.gameMode = GameMode.Tutorial;
-    }
-
-    public bool IsInTutorialMode()
-    {
-        return rules.gameMode == GameMode.Tutorial;
     }
 }

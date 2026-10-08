@@ -15,3 +15,4 @@ MonoBehaviour:
   baseName: Cebola picada
   baseSprite: {fileID: -8581570260313033006, guid: 2bdb53baa83f5f740820e5a5150caf63, type: 3}
   possibleConversions: []
+  junkIngredient: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}

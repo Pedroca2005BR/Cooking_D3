@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlateComponent : MonoBehaviour
 {
-    [SerializeField] RulesObject rulesObject;
+    [SerializeField] RecipeDatabase recipeDatabase;
     public event Action<float> OnScoreCalculated;
 
 
@@ -41,7 +41,7 @@ public class PlateComponent : MonoBehaviour
 
     public void Deliver()
     {
-        var recipe = rulesObject.GetCurrentRecipe();
+        var recipe = recipeDatabase.GetCurrentRecipe();
         if (recipe == null)
         {
             Debug.LogWarning("No recipe found. Cannot deliver.");
@@ -66,7 +66,9 @@ public class PlateComponent : MonoBehaviour
             : actualInstance;
 
         // Calculate score based on the recipe and ingredients on the plate
-        float score = ScoreCalculator.Calculate(actual, recipe.perfectDish);
+        float score;
+        if (actual.Data == fuser.junkIngredient) score = 0;
+        else score = ScoreCalculator.Calculate(actual, recipe.perfectDish);
 
         Debug.Log(ScoreCalculator.Dump(actual));
 

@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5648adf3402f042b9c1e83e7abed67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlateComponent
-  rulesObject: {fileID: 11400000, guid: 1192f03960cd52c409ae44c111dfc41f, type: 2}
+  recipeDatabase: {fileID: 11400000, guid: 33a093f76c6f5db458522048b15f4bc0, type: 2}
 --- !u!58 &143905846
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientFuserComponent
   fusionTree: {fileID: 11400000, guid: 380f6c6f6a6e76e499e40ef443d5f967, type: 2}
+  junkIngredient: {fileID: 11400000, guid: 317c30c6214d53343a21680379b1038f, type: 2}
   ingredientPrefab: {fileID: 4170072990077528222, guid: 8aad1fadd38205043978b69ab6fbeb62, type: 3}
   position: {fileID: 0}
 --- !u!1 &380243468
@@ -454,7 +455,6 @@ GameObject:
   m_Component:
   - component: {fileID: 402572879}
   - component: {fileID: 402572878}
-  - component: {fileID: 402572880}
   - component: {fileID: 402572877}
   m_Layer: 0
   m_Name: Veia
@@ -575,20 +575,6 @@ Transform:
   - {fileID: 2105378115}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &402572880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402572876}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c0704e7e1f2f134997bb6ebe902b0d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CheckScore.Example.VeiamentoAutomatico
-  ideal: {fileID: 11400000, guid: d7d42091be2b86b4a9fde958358a7bb6, type: 2}
-  scoreDisplayer: {fileID: 681978490}
 --- !u!1 &460266174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,6 +1160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientFuserComponent
   fusionTree: {fileID: 11400000, guid: 380f6c6f6a6e76e499e40ef443d5f967, type: 2}
+  junkIngredient: {fileID: 11400000, guid: 317c30c6214d53343a21680379b1038f, type: 2}
   ingredientPrefab: {fileID: 4170072990077528222, guid: 8aad1fadd38205043978b69ab6fbeb62, type: 3}
   position: {fileID: 0}
 --- !u!114 &738798445
@@ -2279,6 +2266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientFuserComponent
   fusionTree: {fileID: 11400000, guid: 380f6c6f6a6e76e499e40ef443d5f967, type: 2}
+  junkIngredient: {fileID: 11400000, guid: 317c30c6214d53343a21680379b1038f, type: 2}
   ingredientPrefab: {fileID: 4170072990077528222, guid: 8aad1fadd38205043978b69ab6fbeb62, type: 3}
   position: {fileID: 0}
 --- !u!114 &1712050847

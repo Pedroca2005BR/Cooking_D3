@@ -11,21 +11,44 @@ public class BaseIngredientData : ScriptableObject
     [Tooltip("When an ingredient goes through a process, they can convert into another one.")]
     public List<IngredientConversionData> possibleConversions;
 
+    [Header("Junk")]
+    [Tooltip("Ingrediente gerado quando a combinação não leva a nenhuma receita (a 'gororoba').")]
+    [SerializeField] BaseIngredientData junkIngredient;
+
     public bool TryTransforming(CookingProcess process, int score, out BaseIngredientData newData)
     {
-        newData = null;
+        newData = junkIngredient;
 
         foreach (IngredientConversionData data in possibleConversions)
         {
-            if (data.processNeeded == process && data.minimumScoreNeeded <= score)
+            if (data.processNeeded == process)
             {
-                
-                newData = data.newIngredientData;
-                return true;
-               
+                if (data.minimumScoreNeeded <= score)
+                {
+                    newData = data.newIngredientData;
+                    return true;
+                }
+
+                // If score is not enough, but the process is correct, returns false and nothing happens
+                return false;
             }
         }
 
-        return false;
+        // If the process is wrong, returns true with the junkIngredient
+        return true;
+    }
+
+    public int GetScoreNeeded(CookingProcess process)
+    {
+        foreach (var data in possibleConversions)
+        {
+            if (process == data.processNeeded)
+            {
+                return data.minimumScoreNeeded;
+            }
+        }
+
+        Debug.Log("No such process for this ingredient.");
+        return -1;
     }
 }

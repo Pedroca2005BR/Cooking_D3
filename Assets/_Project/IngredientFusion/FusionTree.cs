@@ -6,16 +6,33 @@ public class FusionTree : ScriptableObject
 {
     public List<FusionData> possibleFusions;
 
-    public BaseIngredientData TryFusing(BaseIngredientData[] components)
+    public BaseIngredientData TryFusing(BaseIngredientData[] components, out bool onRightPath)
     {
+        onRightPath = false;
+
         foreach (var fusion in possibleFusions)
         {
-            if (fusion.TestComponents(components))
-                return fusion.compositeIngredient;
+            switch (fusion.Compare(components))
+            {
+                case FusionMatch.Complete:
+                    onRightPath = true;
+                    return fusion.compositeIngredient;
+
+                case FusionMatch.Partial:
+                    onRightPath = true;   // continua procurando: outra receita pode estar completa
+                    break;
+            }
         }
 
         return null;
     }
+}
+
+public enum FusionMatch
+{
+    None,       // tem ingrediente que não pertence à receita (ou repetido demais)
+    Partial,    // tudo que foi fornecido pertence à receita, mas ainda falta algo
+    Complete    // exatamente os componentes da receita
 }
 
 [System.Serializable]
@@ -24,23 +41,24 @@ public struct FusionData
     public BaseIngredientData compositeIngredient;
     public List<BaseIngredientData> components;
 
-    public bool TestComponents(BaseIngredientData[] ingredients)
+    public FusionMatch Compare(BaseIngredientData[] ingredients)
     {
-        // Copia os ingredientes para podermos "consumi-los"
-        List<BaseIngredientData> remainingIngredients =
-            new List<BaseIngredientData>(ingredients);
+        if (ingredients == null || ingredients.Length == 0) return FusionMatch.None;
 
-        foreach (var component in components)
+        // Copia os componentes necessários para podermos "marcá-los" como encontrados
+        var stillNeeded = new List<BaseIngredientData>(components);
+
+        foreach (var ingredient in ingredients)
         {
+            int index = stillNeeded.IndexOf(ingredient);
 
-            int index = remainingIngredients.IndexOf(component);
-
+            // Ingrediente que a receita não pede (ou que já foi usado)
             if (index == -1)
-                return false;
+                return FusionMatch.None;
 
-            remainingIngredients.RemoveAt(index);
+            stillNeeded.RemoveAt(index);
         }
 
-        return true;
+        return stillNeeded.Count == 0 ? FusionMatch.Complete : FusionMatch.Partial;
     }
 }

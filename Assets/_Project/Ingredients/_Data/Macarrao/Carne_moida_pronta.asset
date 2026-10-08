@@ -15,6 +15,7 @@ MonoBehaviour:
   baseName: "Carne mo\xEDda"
   baseSprite: {fileID: 4739268265577840726, guid: 64bc7da90f2d18b40bb7290b058a5770, type: 3}
   possibleConversions:
-  - processNeeded: 2
+  - processNeeded: 8
     minimumScoreNeeded: 0
     newIngredientData: {fileID: 11400000, guid: 88818a7d84d97cc429fcb8143b4333fa, type: 2}
+  junkIngredient: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}

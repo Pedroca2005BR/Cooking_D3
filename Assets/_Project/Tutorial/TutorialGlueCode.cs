@@ -27,7 +27,6 @@ public class TutorialGlueCode : MonoBehaviour
     {
         if (firstTimePlayingGame)
         {
-            confirmationComponent.ShowConfirmation("Essa é sua primeira vez jogando o jogo. Deseja ver um tutorial?", PlayTutorial, InitiateNormalGame);
             firstTimePlayingGame = false;
         }
         else
@@ -35,17 +34,5 @@ public class TutorialGlueCode : MonoBehaviour
             tutorialController.EndTutorial();
             sceneController.PlayGame();
         }
-    }
-
-    private void InitiateNormalGame()
-    {
-        tutorialController.EndTutorial();
-        sceneController.PlayGame();
-    }
-
-    public void PlayTutorial()
-    {
-        tutorialController.EnterTutorialMode();
-        sceneController.PlayGame();
     }
 }

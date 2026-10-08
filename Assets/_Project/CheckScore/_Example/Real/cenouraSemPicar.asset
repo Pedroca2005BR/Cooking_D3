@@ -18,3 +18,4 @@ MonoBehaviour:
   - processNeeded: 1
     minimumScoreNeeded: 0
     newIngredientData: {fileID: 11400000, guid: 2ec25d785d5fe954988063bcb80855e1, type: 2}
+  junkIngredient: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}

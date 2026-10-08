@@ -8,5 +8,7 @@ public enum CookingProcess
     Empanar = 3,
     Salt = 4,
     Ketchup = 5,
-    Farinhar = 6
+    Farinhar = 6,
+    Fritar = 7,
+    Dourar = 8
 }

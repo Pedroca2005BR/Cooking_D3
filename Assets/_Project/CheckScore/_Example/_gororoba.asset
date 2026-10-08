@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
-  m_Name: Carne_crua
+  m_Name: _gororoba
   m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
-  baseName: Carne crua
-  baseSprite: {fileID: -4992406529406379832, guid: edfba1e7c128766438f84acc2309eb9e, type: 3}
-  possibleConversions:
-  - processNeeded: 2
-    minimumScoreNeeded: -1
-    newIngredientData: {fileID: 11400000, guid: 20c26faeacdb6934c9c94b7505a16927, type: 2}
+  baseName: gororoba
+  baseSprite: {fileID: 21300000, guid: e8142b1daeea8d3419cd0ffbd7b17a37, type: 3}
+  possibleConversions: []
+  junkIngredient: {fileID: 0}

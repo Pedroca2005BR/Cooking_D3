@@ -15,9 +15,10 @@ MonoBehaviour:
   baseName: Batata frita
   baseSprite: {fileID: 4858588292516344583, guid: edfa903b01516e7468f7966f7dd01fae, type: 3}
   possibleConversions:
-  - processNeeded: 2
+  - processNeeded: 7
     minimumScoreNeeded: 0
     newIngredientData: {fileID: 11400000, guid: 424c91bc8acea9446b11b9e0b6a833d9, type: 2}
   - processNeeded: 5
     minimumScoreNeeded: 0
     newIngredientData: {fileID: 11400000, guid: c2107c33dc669b24e8281031718220eb, type: 2}
+  junkIngredient: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}

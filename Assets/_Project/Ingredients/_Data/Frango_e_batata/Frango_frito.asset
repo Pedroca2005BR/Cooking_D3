@@ -15,6 +15,7 @@ MonoBehaviour:
   baseName: Frango frito
   baseSprite: {fileID: -2506105551705846468, guid: 7ef5aba5adfdd2a4aa3dbd8716ed4b6c, type: 3}
   possibleConversions:
-  - processNeeded: 2
+  - processNeeded: 7
     minimumScoreNeeded: 0
     newIngredientData: {fileID: 11400000, guid: 4321ece8f612cf844b34c43f7f8e7c13, type: 2}
+  junkIngredient: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}

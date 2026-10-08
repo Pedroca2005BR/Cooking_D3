@@ -15,3 +15,4 @@ MonoBehaviour:
   baseName: Batata queimada
   baseSprite: {fileID: -8669526482816674060, guid: 8f6a8abd61a63f64781a1dc691263755, type: 3}
   possibleConversions: []
+  junkIngredient: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}

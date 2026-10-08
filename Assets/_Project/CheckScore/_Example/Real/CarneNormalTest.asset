@@ -15,3 +15,4 @@ MonoBehaviour:
   baseName: CaneTop
   baseSprite: {fileID: 21300000, guid: 660f3b5a5afa4d849a1a1da2af8be50a, type: 3}
   possibleConversions: []
+  junkIngredient: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}

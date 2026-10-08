@@ -15,3 +15,4 @@ MonoBehaviour:
   baseName: Molho pronto
   baseSprite: {fileID: 3955023817265345758, guid: 58b764eb15978d144a2792f60668bf37, type: 3}
   possibleConversions: []
+  junkIngredient: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}
