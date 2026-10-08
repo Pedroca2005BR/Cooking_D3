@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96fc8bff6a4c3aa459ea83c3fc0257de, type: 3}
+  m_Name: _FusionTree
+  m_EditorClassIdentifier: Assembly-CSharp::FusionTree
+  possibleFusions:
+  - compositeIngredient: {fileID: 11400000, guid: f56062c22ec448f4f9ff6f0541df5adf, type: 2}
+    components:
+    - {fileID: 11400000, guid: 66e7ecbd837a3404a8b5bf5b7aba1ae8, type: 2}
+    - {fileID: 11400000, guid: 2532fc235f2bb394db71fe426fe1f07f, type: 2}
+    - {fileID: 11400000, guid: bd97124eb3cde584d955c80f9cbd843e, type: 2}
+    - {fileID: 11400000, guid: 1eef7172b8c2d3d49afa9c7ce547f0be, type: 2}
+  - compositeIngredient: {fileID: 11400000, guid: 451b61f9cb4d8bb4ca2a992e1dfc181d, type: 2}
+    components:
+    - {fileID: 11400000, guid: f56062c22ec448f4f9ff6f0541df5adf, type: 2}
+    - {fileID: 11400000, guid: ffba3b4f090aa6f48a0d9469255f8ad2, type: 2}

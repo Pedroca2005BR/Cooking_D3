@@ -10,22 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
-  m_Name: _Example
+  m_Name: Batata_queimada
   m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
-  Name: 
-  baseSprite: {fileID: 0}
-  processes:
-  - changeName: 0
-    Name: 
-    process: 2
-    minRange: 0
-    maxRange: 0
-    newSprite: {fileID: 0}
-    newColor: {r: 1, g: 0, b: 0, a: 1}
-  - changeName: 1
-    Name: Ferdinando
-    process: 1
-    minRange: 0
-    maxRange: 0
-    newSprite: {fileID: 0}
-    newColor: {r: 0, g: 0.15007663, b: 1, a: 1}
+  baseName: Batata queimada
+  baseSprite: {fileID: -8669526482816674060, guid: 8f6a8abd61a63f64781a1dc691263755, type: 3}
+  possibleConversions: []

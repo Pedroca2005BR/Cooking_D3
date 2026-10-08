@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
+  m_Name: Batata_cortada
+  m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
+  baseName: Batata picada
+  baseSprite: {fileID: -5177369670109440376, guid: 8ea8fbe8542b7d94c9f46924c39e75a7, type: 3}
+  possibleConversions:
+  - processNeeded: 2
+    minimumScoreNeeded: 0
+    newIngredientData: {fileID: 11400000, guid: 98d0db746d78bb24394667e0d7d0448f, type: 2}

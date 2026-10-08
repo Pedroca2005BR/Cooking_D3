@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
+  m_Name: Carne_moida_pronta
+  m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
+  baseName: "Carne mo\xEDda"
+  baseSprite: {fileID: 4739268265577840726, guid: 64bc7da90f2d18b40bb7290b058a5770, type: 3}
+  possibleConversions:
+  - processNeeded: 2
+    minimumScoreNeeded: 0
+    newIngredientData: {fileID: 11400000, guid: 88818a7d84d97cc429fcb8143b4333fa, type: 2}

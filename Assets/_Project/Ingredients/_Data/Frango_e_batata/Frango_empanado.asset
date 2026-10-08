@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
+  m_Name: Frango_empanado
+  m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
+  baseName: Frango empanado
+  baseSprite: {fileID: -1094271989378792600, guid: 2c48f300e694ef348bda3992e7ce354e, type: 3}
+  possibleConversions:
+  - processNeeded: 2
+    minimumScoreNeeded: 0
+    newIngredientData: {fileID: 11400000, guid: f4cdcd6beef7ead47885ef87e30ff94c, type: 2}
