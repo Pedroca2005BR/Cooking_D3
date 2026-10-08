@@ -22,7 +22,8 @@ public class StepByStepChecklist : MonoBehaviour
     #endregion
 
     [Header("Data")]
-    [SerializeField] RecipeSO checkListData;
+    [SerializeField] RecipeDatabase database;
+    RecipeSO checkListData;
 
     [Header("References")]
     [SerializeField] Transform layoutGroup;
@@ -32,9 +33,9 @@ public class StepByStepChecklist : MonoBehaviour
     List<StepComponent> steps;
     int currentStepIndex;
 
-    public void Setup(RecipeSO recipeData)
+    void Start()
     {
-        checkListData = recipeData;
+        checkListData = database.GetCurrentRecipe();
         steps = new();
         CreateSteps();
         currentStepIndex = 0;
