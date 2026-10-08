@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewChecklist", menuName = "Scriptable Objects/RecipeSO")]
 public class RecipeSO : ScriptableObject
 {
+    public BaseIngredientData[] ingredientesNecessarios;
+
     public StepData[] howToMakeChecklist;
 
     public IdealIngredientData perfectDish;
