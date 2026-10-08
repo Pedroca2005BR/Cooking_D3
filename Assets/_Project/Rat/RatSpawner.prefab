@@ -47,13 +47,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RatSpawner
   spawnPoint: {fileID: 5402126189722473476}
   spawnRadius: 1
-  ratPrefab: {fileID: 2988969586305166960, guid: ad58e12dd50fdd2408ec2cc0c277ac9e, type: 3}
+  ratPrefabs:
+  - ratPrefab: {fileID: 2988969586305166960, guid: ad58e12dd50fdd2408ec2cc0c277ac9e, type: 3}
+    spawnChance: 1
   ratSpawnChance:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.0037612915
-      value: 0.80685425
+      time: 0.001914978
+      value: 0.10147858
       inSlope: -0.40756857
       outSlope: -0.40756857
       tangentMode: 0
@@ -73,6 +75,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   maxRatAmount: 7
+  empty: {fileID: -3524994361574451787, guid: 9d35d6114666d4b4cacf8fb91d55ec3a, type: 3}
+  eyesInside: {fileID: 3563095082158243921, guid: 01a8230bc26cdbb46b2a49b32c2b4374, type: 3}
+  checkCooldown: 10
+  eyesChance: 0.5
+  increaseInSpawnChance: 0.2
 --- !u!212 &7608089399026086384
 SpriteRenderer:
   serializedVersion: 2

@@ -72,7 +72,8 @@ public class RatSpawner : MonoBehaviour
 
     void SpawnRat()
     {
-        for(int i = 0; i < ratPrefabs.Length; i++)
+        int i;
+        for (i = 0; i < ratPrefabs.Length; i++)
         {
             float rand = Random.value;
             if (rand < ratPrefabs[i].spawnChance)
@@ -81,7 +82,7 @@ public class RatSpawner : MonoBehaviour
             }
         }
 
-        var rat = Instantiate(ratPrefabs[0].ratPrefab, spawnPoint.position, Quaternion.identity, transform).GetComponent<RatBehaviour>();
+        var rat = Instantiate(ratPrefabs[i].ratPrefab, spawnPoint.position, Quaternion.identity, transform).GetComponent<RatBehaviour>();
         rat.home = spawnPoint;
         rats.Add(rat);
         GiveObjectives();
@@ -89,6 +90,8 @@ public class RatSpawner : MonoBehaviour
 
     public void GiveObjectives()
     {
+        rats.RemoveAll(r => r == null);
+
         if (ingredients.Count > 0)
         {
             foreach (var rat in rats)

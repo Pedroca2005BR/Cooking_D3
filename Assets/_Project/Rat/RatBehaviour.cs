@@ -9,6 +9,7 @@ public class RatBehaviour : MonoBehaviour
     [Header("Settings")]
     public Transform home;  // May be set on spawn
     [SerializeField] float grabDistance = 0.1f; // The distance at which the rat can grab the food
+    [SerializeField] Animator animator;
 
     NavMeshAgent agent;
 
@@ -140,8 +141,10 @@ public class RatBehaviour : MonoBehaviour
             desiredFood.SetParent(null);
         }
 
-        // TODO: Play Death Animation
-        Destroy(gameObject);
+        animator.SetTrigger("Dead");
+        Destroy(gameObject, 3f);
+        agent.enabled = false;
+        enabled = false;
     }
 
 

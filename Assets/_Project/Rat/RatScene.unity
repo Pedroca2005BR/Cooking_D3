@@ -2117,32 +2117,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
-      propertyPath: empty
-      value: 
-      objectReference: {fileID: -3524994361574451787, guid: 9d35d6114666d4b4cacf8fb91d55ec3a, type: 3}
-    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
-      propertyPath: eyesInside
-      value: 
-      objectReference: {fileID: 3563095082158243921, guid: 01a8230bc26cdbb46b2a49b32c2b4374, type: 3}
-    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
       propertyPath: ratPrefabs.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
       propertyPath: ratPrefabs.Array.data[0].ratPrefab
       value: 
+      objectReference: {fileID: 2988969586305166960, guid: f1162695fd6c20746bbab23f9da9ab37, type: 3}
+    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
+      propertyPath: ratPrefabs.Array.data[1].ratPrefab
+      value: 
+      objectReference: {fileID: 2988969586305166960, guid: b1ee521c26bc2a24495e00d6fd8cef71, type: 3}
+    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
+      propertyPath: ratPrefabs.Array.data[2].ratPrefab
+      value: 
       objectReference: {fileID: 2988969586305166960, guid: ad58e12dd50fdd2408ec2cc0c277ac9e, type: 3}
     - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
       propertyPath: ratPrefabs.Array.data[0].spawnChance
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
+      propertyPath: ratPrefabs.Array.data[1].spawnChance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
+      propertyPath: ratPrefabs.Array.data[2].spawnChance
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
-      propertyPath: ratSpawnChance.m_Curve.Array.data[0].time
-      value: 0.001914978
-      objectReference: {fileID: 0}
-    - target: {fileID: 8815598314739262063, guid: fae7d82d0dbab6a4ebdb98e9cdc31ece, type: 3}
-      propertyPath: ratSpawnChance.m_Curve.Array.data[0].value
-      value: 0.10147858
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

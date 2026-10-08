@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3492470609894619416}
   - component: {fileID: -3625604425476476377}
   m_Layer: 0
-  m_Name: Rato
+  m_Name: Rato_albino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SearchForFood
   home: {fileID: 0}
   grabDistance: 0.2
+  animator: {fileID: 7366965310733444145}
 --- !u!114 &7356572075232324771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4765130208377382230}
   - component: {fileID: 4737627002500985509}
+  - component: {fileID: 7366965310733444145}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -216,7 +218,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9168279963068369417, guid: 4a34fbab1dbbff6409ffd1ea3639fab7, type: 3}
+  m_Sprite: {fileID: -8944362304904439685, guid: d45a3121b3da09e45992dd17ff73ad7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -226,3 +228,25 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &7366965310733444145
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687268376748916676}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e80e4cd61a5b1b48926234a94b6d8aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
