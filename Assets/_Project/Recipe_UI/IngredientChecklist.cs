@@ -41,6 +41,7 @@ public class IngredientChecklist : MonoBehaviour
         foreach (var step in checkListData.ingredientesNecessarios)
         {
             StepComponent s = Instantiate(stepPrefab, layoutGroup).GetComponent<StepComponent>();
+            //Debug.Log($"{step.textToShow}");
             s.Setup(step);
             steps.Add(s);
         }

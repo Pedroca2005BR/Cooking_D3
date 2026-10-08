@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7798c3ca1339064196ef7eb0db9f2c4, type: 3}
+  m_Name: _Macarrao_A_Bolonhesa
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeSO
+  ingredientesNecessarios:
+  - textToShow: 1 Alho
+    ingredient: {fileID: 11400000, guid: 7272c667102462642870dc5716cd362a, type: 2}
+    amount: 0
+  - textToShow: 1 Cebola
+    ingredient: {fileID: 11400000, guid: c3e438bb74661e24cbb4806a39cb7573, type: 2}
+    amount: 1
+  - textToShow: 1 Tomate
+    ingredient: {fileID: 11400000, guid: eaf2cb0d3197d314fba25ab2e86b3401, type: 2}
+    amount: 1
+  - textToShow: 1 Molho de tomate
+    ingredient: {fileID: 11400000, guid: d7bc99befb0d0514199741adc440b550, type: 2}
+    amount: 1
+  - textToShow: "1 Por\xE7\xE3o de Spaghetti"
+    ingredient: {fileID: 11400000, guid: df4e418345427ff4c8103bacf7519e39, type: 2}
+    amount: 1
+  - textToShow: "1 Carne mo\xEDda"
+    ingredient: {fileID: 11400000, guid: 20c26faeacdb6934c9c94b7505a16927, type: 2}
+    amount: 1
+  howToMakeChecklist: []
+  perfectDish: {fileID: 0}
