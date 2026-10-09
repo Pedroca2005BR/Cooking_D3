@@ -11,23 +11,25 @@ public class StepCollapseAnimator : MonoBehaviour
     LayoutElement layoutElement;
     CanvasGroup group;
     Coroutine routine;
+    RectMask2D mask;
 
     bool? visible;          // null = ainda não inicializado
     float progress = 1f;    // 1 = totalmente visível, 0 = recolhido
-    float fullHeight;
+    float fullHeight = 100f;
 
     void Awake()
     {
         rect = (RectTransform)transform;
         if (!TryGetComponent(out layoutElement)) layoutElement = gameObject.AddComponent<LayoutElement>();
         if (!TryGetComponent(out group)) group = gameObject.AddComponent<CanvasGroup>();
-        if (!TryGetComponent<RectMask2D>(out _)) gameObject.AddComponent<RectMask2D>(); // corta o conteúdo enquanto a altura encolhe
+        if (!TryGetComponent(out mask)) gameObject.AddComponent<RectMask2D>(); // corta o conteúdo enquanto a altura encolhe
     }
 
     void OnEnable()
     {
         // Se o objeto foi desativado no meio da animação, reaplica o estado final
-        if (visible.HasValue) Apply(visible.Value ? 1f : 0f);
+        //if (visible.HasValue) Apply(visible.Value ? 1f : 0f);
+        SetVisible(true, true);
     }
 
     public void SetVisible(bool show, bool instant = false)
@@ -65,11 +67,9 @@ public class StepCollapseAnimator : MonoBehaviour
     void MeasureFullHeight()
     {
         // Limpa as sobrescritas para medir a altura natural do conteúdo
-        layoutElement.minHeight = -1f;
-        layoutElement.preferredHeight = -1f;
         layoutElement.ignoreLayout = false;
         LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
-        fullHeight = LayoutUtility.GetPreferredHeight(rect);
+        fullHeight = 100f;
     }
 
     void Apply(float p)
@@ -85,13 +85,14 @@ public class StepCollapseAnimator : MonoBehaviour
         {
             // Totalmente visível: devolve o controle ao layout (acompanha mudanças de texto)
             layoutElement.ignoreLayout = false;
-            layoutElement.minHeight = -1f;
-            layoutElement.preferredHeight = -1f;
+            layoutElement.preferredHeight = fullHeight;
+            mask.enabled = false;
         }
         else if (p <= 0f)
         {
             // Totalmente recolhido: sai do layout (sem sobrar spacing)
             layoutElement.ignoreLayout = true;
+            mask.enabled = true;
         }
         else
         {

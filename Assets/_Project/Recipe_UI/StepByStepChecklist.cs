@@ -1,5 +1,6 @@
 using Pedroca2005BR.Utilities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -29,6 +30,16 @@ public class StepByStepChecklist : MonoBehaviour
     [SerializeField] Transform layoutGroup;
     [SerializeField] GameObject stepPrefab;
 
+    [Header("Collapse")]
+    [SerializeField] Button toggleButton;
+    [SerializeField] RectTransform arrowIcon;     // opcional
+    [SerializeField] bool startCollapsed;
+    [SerializeField] float advanceDelay = 0.6f;   // dá tempo de ver o riscado antes de trocar o passo atual (0 = imediato)
+
+    List<StepCollapseAnimator> animators = new();
+    bool collapsed;
+    Coroutine refreshRoutine;
+
     // Runtime variables
     List<StepComponent> steps;
     int currentStepIndex;
@@ -37,17 +48,23 @@ public class StepByStepChecklist : MonoBehaviour
     {
         checkListData = database.GetCurrentRecipe();
         steps = new();
+        animators = new();
         CreateSteps();
         currentStepIndex = 0;
+        SetCollapsed(startCollapsed, instant: true);
     }
 
     void CreateSteps()
     {
-        foreach(var step in checkListData.howToMakeChecklist)
+        foreach (var step in checkListData.howToMakeChecklist)
         {
             StepComponent s = Instantiate(stepPrefab, layoutGroup).GetComponent<StepComponent>();
             s.Setup(step);
             steps.Add(s);
+
+            if (!s.TryGetComponent(out StepCollapseAnimator anim))
+                anim = s.gameObject.AddComponent<StepCollapseAnimator>();
+            animators.Add(anim);
         }
     }
 
@@ -65,12 +82,47 @@ public class StepByStepChecklist : MonoBehaviour
 
     private void UpdateCurrentStep(int index)
     {
-        // TODO: Add logic to update the visuals of the current step
+        if (refreshRoutine != null) StopCoroutine(refreshRoutine);
+        refreshRoutine = StartCoroutine(RefreshAfterDelay());
+    }
+
+    IEnumerator RefreshAfterDelay()
+    {
+        if (advanceDelay > 0f) yield return new WaitForSecondsRealtime(advanceDelay);
+        RefreshVisibility();
+        refreshRoutine = null;
+    }
+
+    public void ToggleCollapsed() => SetCollapsed(!collapsed);
+
+    public void SetCollapsed(bool value, bool instant = false)
+    {
+        collapsed = value;
+        if (arrowIcon != null)
+            arrowIcon.localRotation = Quaternion.Euler(0f, 0f, collapsed ? 180f : 0f);
+        RefreshVisibility(instant);
+    }
+
+    void RefreshVisibility(bool instant = false)
+    {
+        for (int i = 0; i < animators.Count; i++)
+            animators[i].SetVisible(!collapsed || i == currentStepIndex, instant);
+    }
+
+    // Avança até o primeiro passo não concluído (ou o último, se tudo estiver concluído)
+    void AdvanceCurrentStep()
+    {
+        int previous = currentStepIndex;
+        while (currentStepIndex < steps.Count - 1 && steps[currentStepIndex].IsCompleted)
+            currentStepIndex++;
+
+        if (currentStepIndex != previous) UpdateCurrentStep(currentStepIndex);
     }
 
 
     private void OnEnable()
     {
+        toggleButton.onClick.AddListener(ToggleCollapsed);
         EventManager.Subscribe(EventConstantNames.INGREDIENT_CREATED, OnIngredientCreated);
         EventManager.Subscribe(EventConstantNames.INGREDIENT_CONSUMED, OnIngredientConsumed);
         EventManager.Subscribe(EventConstantNames.INGREDIENT_STOLEN, OnIngredientStolen);
@@ -78,6 +130,7 @@ public class StepByStepChecklist : MonoBehaviour
 
     private void OnDisable()
     {
+        toggleButton.onClick.RemoveListener(ToggleCollapsed);
         EventManager.Unsubscribe(EventConstantNames.INGREDIENT_CREATED, OnIngredientCreated);
         EventManager.Unsubscribe(EventConstantNames.INGREDIENT_CONSUMED, OnIngredientConsumed);
         EventManager.Unsubscribe(EventConstantNames.INGREDIENT_STOLEN, OnIngredientStolen);
@@ -168,11 +221,7 @@ public class StepByStepChecklist : MonoBehaviour
         {
             steps[stepIndex].UpdateQuantity(1);
 
-            if (steps[currentStepIndex].IsCompleted)
-            {
-                currentStepIndex++;
-                UpdateCurrentStep(currentStepIndex);
-            }
+            AdvanceCurrentStep();
         }
     }
 }

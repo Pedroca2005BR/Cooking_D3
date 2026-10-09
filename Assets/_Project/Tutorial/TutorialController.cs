@@ -3,9 +3,6 @@ using UnityEngine.InputSystem;
 
 public class TutorialController : MonoBehaviour
 {
-    [Header("Rules Reference")]
-    [SerializeField] RecipeDatabase rules;
-
     [Header("Tutorial Steps")]
     [SerializeField] TutorialObjectBase[] tutorialSteps;
     private int currentStepIndex = 0;
@@ -37,10 +34,15 @@ public class TutorialController : MonoBehaviour
             // Stop the previous step if it exists
             tutorialSteps[currentStepIndex - 1].StopStep();
         }
+
         if (currentStepIndex < tutorialSteps.Length)
         {
             tutorialSteps[currentStepIndex].StartStep();
             currentStepIndex++;
+        }
+        else // End of tutorial
+        {
+            EndTutorial();
         }
     }
 
@@ -56,6 +58,10 @@ public class TutorialController : MonoBehaviour
 
     public void EndTutorial()
     {
+        foreach(var step in tutorialSteps)
+        {
+            step.StopStep();
+        }
         PlayerPrefs.SetInt("HasPlayedBefore", 1);
     }
 }
