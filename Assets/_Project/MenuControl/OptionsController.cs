@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class OptionsController : MonoBehaviour
 {
     [SerializeField] GameObject optionsMenu;
+    protected bool active = false;
 
     public void ExitGame()
     {
@@ -11,12 +12,21 @@ public class OptionsController : MonoBehaviour
         Application.Quit();
     }
 
-    public void OpenOptionsMenu()
+    public virtual void ToggleOptionMenu()
     {
-        optionsMenu.SetActive(true);
+        active = optionsMenu.activeInHierarchy;
+        if (active) ExitOptionsMenu();
+        else OpenOptionsMenu();
+        active = optionsMenu.activeInHierarchy;
     }
 
-    public void ExitOptionsMenu()
+    void OpenOptionsMenu()
+    {
+        optionsMenu.SetActive(true);
+        
+    }
+
+    void ExitOptionsMenu()
     {
         optionsMenu.SetActive(false);
     }
