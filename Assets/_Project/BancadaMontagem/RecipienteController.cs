@@ -1,76 +1,48 @@
 using UnityEngine;
 
-[RequireComponent(typeof(IngredientFuserComponent))]
+[RequireComponent(typeof(FoodProcessorComponent))]
 public class RecipienteController : MonoBehaviour, IReceberIngrediente
 {
-    [Header("Configuração do Recipiente")]
-    [Tooltip("BaseIngredientData do Ovo/Farinha")]
-    [SerializeField] private BaseIngredientData ingredienteOculto;
-
-    [Tooltip("O prefab do ingrediente")]
-    [SerializeField] private GameObject prefabIngredienteBase; 
-
-    private IngredientFuserComponent fuser;
-    private IngredientComponent ingredienteAtual;
+    private FoodProcessorComponent processador;
+    private IngredienteFogao ingredienteAtual;
 
     private void Awake() {
-        fuser = GetComponent<IngredientFuserComponent>();
+        processador = GetComponent<FoodProcessorComponent>();
     }
 
     public bool AceitaIngrediente(GameObject objeto) {
-        IngredientComponent novoIngrediente = objeto.GetComponent<IngredientComponent>();
+        IngredienteFogao novoIngrediente = objeto.GetComponent<IngredienteFogao>();
         
-        // So aceita se for um ingrediente e se o recipiente estiver vazio
+        // 1. Só aceita se for um ingrediente válido e se o recipiente estiver vazio
         if (novoIngrediente == null || ingredienteAtual != null) return false;
 
-        // Cria um objeto temporario invisivel para o CanFuse
-        GameObject tempObj = new GameObject("Temp_Sacrificio");
-        IngredientComponent tempIng = tempObj.AddComponent<IngredientComponent>();
-        tempIng.Setup(ingredienteOculto);
-
-        // Testa se existe receita
-        IngredientComponent[] paraTestar = { tempIng, novoIngrediente };
-        bool aceita = ValidadorDeReceita.AceitaFusao(fuser, tempIng, novoIngrediente);        
-        // Destroi o objeto de teste
-        Destroy(tempObj); 
-        
-        return aceita;
+        // 2. Pergunta ao validador se o ingrediente tem uma conversão para Farinhar/Empanar
+        // Isso elimina completamente a necessidade de instanciar "GameObjects de sacrifício"
+        return ValidadorDeReceita.AceitaProcesso(novoIngrediente.ingComponent, processador.ProcessoAtual);
     }
 
     public void ReceberIngredienteSolto(GameObject objeto) {
-        IngredientComponent novoIngrediente = objeto.GetComponent<IngredientComponent>();
+        IngredienteFogao novoIngrediente = objeto.GetComponent<IngredienteFogao>();
         if (novoIngrediente == null) return;
 
-        // Instancia o objeto fisico real que vai ser destruido
-        GameObject sacrificio = Instantiate(prefabIngredienteBase, transform.position, Quaternion.identity);
-        IngredientComponent compSacrificio = sacrificio.GetComponent<IngredientComponent>();
-        compSacrificio.Setup(ingredienteOculto);
+        ingredienteAtual = novoIngrediente;
+        objeto.transform.position = this.transform.position; // Centraliza visualmente na tigela
 
-        //lista de ingredientes que vao ser fundidos
-        IngredientComponent[] paraFundir = { compSacrificio, novoIngrediente };
+        // 3. Descobre qual é a "nota" exigida pela receita para esse processo
+        int notaAlvo = ingredienteAtual.ingComponent.data.GetScoreNeeded(processador.ProcessoAtual);
 
-        // Executa a fusao
-        if (fuser.TryFusing(paraFundir, out GameObject objetoFundido)) {
-            ingredienteAtual = objetoFundido.GetComponent<IngredientComponent>();
-
-            objetoFundido.transform.position = this.transform.position;
-            IngredienteFogao ingFogao = objetoFundido.GetComponent<IngredienteFogao>();
-            if (ingFogao != null) {
-                ingFogao.AjustarColisor();
-            }
-
-            //atualiza o DropSystem com o novo objeto
-            DropSystem dropNovo = objetoFundido.GetComponent<DropSystem>();
-            if (dropNovo != null) {
-                dropNovo.DefinirBancadaAtual(this, this.transform);
-            }
-        }else {
-            Destroy(sacrificio);
-            ingredienteAtual = novoIngrediente;
+        // 4. Como empanar/farinhar é uma ação instantânea de mergulhar o item,
+        // aplicamos o processo enviando a nota exata que garante o sucesso imediato.
+        if (processador != null) {
+            processador.ProcessIngredient(ingredienteAtual.ingComponent, notaAlvo);
+            ingredienteAtual.AjustarColisor();
         }
+
+        Debug.Log($"Ingrediente processado instantaneamente no recipiente: {processador.ProcessoAtual}");
     }
 
     public void RemoverIngrediente(GameObject objeto) {
+        // Libera o recipiente para ser usado novamente quando o jogador retirar o item
         if (ingredienteAtual != null && objeto == ingredienteAtual.gameObject) {
             ingredienteAtual = null;
         }

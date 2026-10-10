@@ -3,17 +3,21 @@ using UnityEngine;
 [RequireComponent(typeof(FoodProcessorComponent))]
 public class TabuaDeCorte : MonoBehaviour, IReceberIngrediente {
     private IngredienteFogao ingredienteAtual;
-    private FoodProcessorComponent processador; // Referência para o componente do De Paula
+    private FoodProcessorComponent processador; 
 
-    [Header("Notas Provisorias")]
-    [SerializeField] private int notaCorte = 100;
+    [Header("Configurações do Minigame (Base)")]
+    [SerializeField] private float velocidadeCursorBase = 2f;
+    [SerializeField] private float tamanhoZonaBase = 0.3f;
+    [SerializeField] private float tempoMiniGame = 5f;
+
+    private int cortesAcertados = 0;
 
     private void Awake() {
         processador = GetComponent<FoodProcessorComponent>();
     }
 
     private void OnEnable() {
-        EventBusCorte.OnFimMiniGame += FinalizarCorte;        
+        EventBusCorte.OnFimMiniGame += FinalizarCorte;
     }
 
     private void OnDisable() {
@@ -24,7 +28,7 @@ public class TabuaDeCorte : MonoBehaviour, IReceberIngrediente {
         IngredienteFogao ingrediente = objeto.GetComponent<IngredienteFogao>();
 
         // Retorna verdadeiro se existe ingrediente a ser recebido, se ele não foi cortado e se a tábua estiver vazia
-        if (ingrediente != null && ingredienteAtual == null && !ingrediente.jaFoiCortado) {
+        if (ingrediente != null && ingredienteAtual == null) {
             // Pergunta ao validador se este ingrediente aceita ser cortado
             return ValidadorDeReceita.AceitaProcesso(ingrediente.ingComponent, processador.ProcessoAtual);
         }
@@ -38,7 +42,13 @@ public class TabuaDeCorte : MonoBehaviour, IReceberIngrediente {
         if(ingredienteAtual != null) {
             objeto.transform.position = this.transform.position; // Centraliza a comida na tábua
 
-            EventBusCorte.OnIniciarMiniGame?.Invoke(ingredienteAtual.dadosBase); // Avisa que o minigame começou
+            int cortesAlvo = ingredienteAtual.ingComponent.data.GetScoreNeeded(processador.ProcessoAtual);
+
+            if (cortesAlvo <= 0) cortesAlvo = 3; //caso o jogador n tenha processo(gororoba)
+
+            cortesAcertados = cortesAlvo; //memoriza o numero de cortes para a pontuacao
+
+            EventBusCorte.OnIniciarMiniGame?.Invoke(cortesAlvo, velocidadeCursorBase, tamanhoZonaBase, tempoMiniGame); // Avisa que o minigame começou
 
             Debug.Log($"Tabua recebeu {objeto.name}");
         }
@@ -57,20 +67,12 @@ public class TabuaDeCorte : MonoBehaviour, IReceberIngrediente {
 
     private void FinalizarCorte() { // Método para quando o minigame acabar
         if(ingredienteAtual != null) {
-            ingredienteAtual.jaFoiCortado = true;
-
             if (processador != null) {
-                int notaFinal = CalcularNotaCorte();
-                processador.ProcessIngredient(ingredienteAtual.ingComponent, notaFinal);
+                processador.ProcessIngredient(ingredienteAtual.ingComponent, cortesAcertados);
                 ingredienteAtual.AjustarColisor();
             }
 
             Debug.Log($"{ingredienteAtual.gameObject.name} foi cortado!");
         }
-    }
-
-    private int CalcularNotaCorte() {
-        //Futuramente, substituir pelo cálculo real baseado nos acertos/erros do minigame de corte
-        return notaCorte;
     }
 }

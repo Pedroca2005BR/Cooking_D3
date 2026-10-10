@@ -1,19 +1,17 @@
+using Unity.Multiplayer.Center.Common;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class IngredienteFogao : MonoBehaviour
 {
-    public enum EstadoCozimento { Cru, Cozido, Queimado}
-
-    public IngredienteDataSO dadosBase;
-
     [Header("Estado Atual")]
     [SerializeField] private float tempoCozido = 0f;
-    private EstadoCozimento estado = EstadoCozimento.Cru;
-    public bool jaFoiCortado = false;
+    [Header("Configuracao")]
+    [SerializeField] private float tempoGororoba = 10f;
 
-    [Header("Notas Provisorias")]
-    [SerializeField] private int notaCozido = 100;
-    [SerializeField] private int notaQueimado = 0;
+    private float tempoNecessario;
+    private bool processado = false;
+    public bool jaFoiCortado = false;
 
     private SpriteRenderer spriteIng;
     private FoodProcessorComponent processoAtual;
@@ -22,57 +20,44 @@ public class IngredienteFogao : MonoBehaviour
     private void Awake() {
         spriteIng = GetComponent<SpriteRenderer>();
         ingComponent = GetComponent<IngredientComponent>();
+        ingComponent.OnSetup += AjustarColisor;
     }
 
-    private void Start() {
-        if(ingComponent.data != null) {
-            ingComponent.Setup(ingComponent.data);
-            AjustarColisor();
-        }
+    void OnDisable()
+    {
+        ingComponent.OnSetup -= AjustarColisor;
     }
 
     public void DefinirProcessador(FoodProcessorComponent processo) {
+        //seta neste metodo caso o novo ingrediente continue no mesmo processador
         processoAtual = processo;
+        processado = false;
+        tempoCozido = 0f;
+
+        if(processoAtual != null && ingComponent != null && ingComponent.data != null) {
+            int score = ingComponent.data.GetScoreNeeded(processoAtual.ProcessoAtual); //score necessario para o processo
+
+            //Se o processo for valido, utiliza o tempo da receita. Se for invalido utliza o tempo para gororoba
+            tempoNecessario = (score != -1) ? score : tempoGororoba; 
+        }
     }
 
-    public void RecebeCalor(float tempoNoFogo) {
-        if(estado == EstadoCozimento.Queimado || dadosBase == null) return;
+    public void RecebeCalor(float tempoNoFogo)
+    {
+        if(processoAtual == null && ingComponent == null && ingComponent.data == null) return;
 
         tempoCozido += tempoNoFogo;
 
-        if(estado == EstadoCozimento.Cru && tempoCozido >= dadosBase.tempoCozinhar) {
-            FicarPronto();
-        }else if(estado == EstadoCozimento.Cozido && tempoCozido >= dadosBase.tempoQueimar) {
-            FicarQueimado();
+        if(tempoCozido >= tempoNecessario) //se o tempo alcancou o limite da receita ou para virar gororoba
+        {
+            processado = true; 
+            processoAtual.ProcessIngredient(ingComponent, (int)tempoCozido); //realiza o processo
+
+            AjustarColisor(); //ajusta o tamanho do colisor do novo ingrediente
+
+            DefinirProcessador(processoAtual);
         }
     }
-
-    private void FicarPronto() {
-        estado = EstadoCozimento.Cozido;
-        if(processoAtual != null) {
-            int nota = CalcularNota();
-            processoAtual.ProcessIngredient(ingComponent, nota);
-            AjustarColisor();
-        }
-    }
-
-    private void FicarQueimado() {
-        estado = EstadoCozimento.Queimado;
-        if(processoAtual != null) {
-            int nota = CalcularNota();
-            processoAtual.ProcessIngredient(ingComponent, nota);
-            AjustarColisor();
-        }    
-    }
-
-    private int CalcularNota() {
-        //Implementar calculo da nota do processo
-
-        if(estado == EstadoCozimento.Cozido) return notaCozido;
-        if(estado == EstadoCozimento.Queimado) return notaQueimado;
-        return 0;
-    }
-
     public void AjustarColisor()
     {
         //ajusta o tamanho do colizor de acordo com o sprite
@@ -84,15 +69,8 @@ public class IngredienteFogao : MonoBehaviour
     }
 
     public float CalculaPorcentagem() {
-        if(dadosBase == null) return 0f;
 
-        if(estado == EstadoCozimento.Cru) return Mathf.Clamp01(tempoCozido/ dadosBase.tempoCozinhar);
-        if(estado == EstadoCozimento.Cozido) {
-            float tempo = tempoCozido - dadosBase.tempoCozinhar;
-            float duracaoQueimar = dadosBase.tempoQueimar - dadosBase.tempoCozinhar;
-            return Mathf.Clamp01(tempo/duracaoQueimar);
-        }
-
-        return 1f;
+        if(tempoNecessario <= 0) return 0f;
+        return Mathf.Clamp01(tempoCozido / tempoNecessario);
     }
 }

@@ -2,26 +2,19 @@ using UnityEngine;
 
 public static class ValidadorDeReceita
 {
-    // Validador para bancadas que transformam itens (Frigideira, Fritadeira, Tabua de Corte)
     public static bool AceitaProcesso(IngredientComponent ingrediente, CookingProcess processoDaBancada)
     {
-        if (ingrediente == null || ingrediente.data == null) return false;
-
-        // Verifica se o ScriptableObject do ingrediente possui uma conversao para aquele processo
-        foreach (var conversao in ingrediente.data.possibleConversions)
-        {
-            if (conversao.processNeeded == processoDaBancada) return true;
-        }
-        
-        return false; // Se o processo nao existir na receita, bloqueia a entrada
+        return ingrediente != null && ingrediente.data != null;
     }
 
     // Validador para bancadas que misturam itens (Bacia de Ovo, Mesa de Montagem)
-    public static bool AceitaFusao(IngredientFuserComponent fuser, IngredientComponent ing1, IngredientComponent ing2)
+    public static bool AceitaFusao(IngredientFuserComponent fuser, IngredientComponent[] ingredientesParaTestar)
     {
-        if (fuser == null || ing1 == null || ing2 == null) return false;
+        //array permite fusões com mais de 2 ingredientes.
+        if (fuser == null || ingredientesParaTestar == null) return false;
 
-        IngredientComponent[] paraTestar = { ing1, ing2 };
-        return fuser.CanFuse(paraTestar);
+        //verifica apenas se as referências físicas são válidas.
+        FusionResult resultado = fuser.Evaluate(ingredientesParaTestar, out _);
+        return fuser.CanFuse(ingredientesParaTestar) || resultado == FusionResult.Incomplete;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class MinigameCorteUI : MonoBehaviour
 {
@@ -8,11 +9,18 @@ public class MinigameCorteUI : MonoBehaviour
     public RectTransform zonaAcerto;
     public RectTransform cursor;
 
+    [Header("Informações de Jogo")]
+    public TextMeshProUGUI textoTempo; 
+    public TextMeshProUGUI textoCortes;
+
     private float larguraRealUI;
 
     private void Awake()
     {
+        Canvas.ForceUpdateCanvases();
         larguraRealUI = barraFundo.rect.width;
+        zonaAcerto.pivot = new Vector2(0, 0.5f);
+        cursor.pivot = new Vector2(0, 0.5f);
     }
 
     private void OnEnable()
@@ -23,6 +31,9 @@ public class MinigameCorteUI : MonoBehaviour
         
         EventBusCorte.OnIniciarMiniGame += LigarUI;
         EventBusCorte.OnTerminarMiniGame += DesligarUI;
+
+        EventBusCorte.OnTempoAlterado += AtualizarTextoTempo;
+        EventBusCorte.OnCortesRestantesAlterados += AtualizarTextoCortes;
     }
 
     private void OnDisable()
@@ -33,9 +44,12 @@ public class MinigameCorteUI : MonoBehaviour
         
         EventBusCorte.OnIniciarMiniGame -= LigarUI;
         EventBusCorte.OnTerminarMiniGame -= DesligarUI;
+
+        EventBusCorte.OnTempoAlterado -= AtualizarTextoTempo;
+        EventBusCorte.OnCortesRestantesAlterados -= AtualizarTextoCortes;
     }
 
-    private void LigarUI(IngredienteDataSO dados)
+    private void LigarUI(int _, float __, float ___, float ____)
     {
         painelVisual.SetActive(true);
     }
@@ -43,6 +57,19 @@ public class MinigameCorteUI : MonoBehaviour
     private void DesligarUI()
     {
         painelVisual.SetActive(false);
+    }
+
+    private void AtualizarTextoTempo(float tempo) {
+        if (textoTempo != null) {
+            // Formata o float para 1 casa decimal (Ex: 4.5s)
+            textoTempo.text = "Tempo:" + tempo.ToString("F1") + "s"; 
+        }
+    }
+
+    private void AtualizarTextoCortes(int cortesRestantes) {
+        if (textoCortes != null) {
+            textoCortes.text = "Restam " + cortesRestantes.ToString() + " cortes";
+        }
     }
 
     private void DesenharZona(float posMatematica, float larguraMatematica)

@@ -315,13 +315,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4274205688040054753}
   - component: {fileID: 6360419184121611356}
-  - component: {fileID: 4611423075920423699}
   - component: {fileID: 1153996726797546320}
   - component: {fileID: 7711745711494381469}
   - component: {fileID: 4414007695264526807}
-  - component: {fileID: 3788079354803682169}
   - component: {fileID: 6808472962802255931}
-  - component: {fileID: 5071743040357582436}
   m_Layer: 0
   m_Name: Panela
   m_TagString: Panela
@@ -404,20 +401,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &4611423075920423699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8623121071786485326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c8a831a107efb428e3e4b30462c608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DraggableComponent
-  useDamping: 1
-  damping: 0.05
 --- !u!114 &1153996726797546320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,8 +413,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b92144ba7f56b43bc01c2db09b51cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PanelaController
-  noFogo: 0
-  ingrediente: {fileID: 0}
+  aparecerEmCima: 1
+  distanciaY: 1.5
+  gororoba: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}
 --- !u!58 &7711745711494381469
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -495,20 +479,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3788079354803682169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8623121071786485326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e91e66c3c14d8438a538ec7cb5ea76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DropSystem
-  imantarNoCentro: 1
-  tornarFilhoDoAlvo: 0
 --- !u!114 &6808472962802255931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,18 +492,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodProcessorComponent
   process: 2
---- !u!114 &5071743040357582436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8623121071786485326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07ac1dfa0dd8ce94ebeadb67c7f3c78a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IngredientFuserComponent
-  fusionTree: {fileID: 11400000, guid: 41c10681a1333eb4a8b7a252d0c9d8dd, type: 2}
-  ingredientPrefab: {fileID: 0}
-  position: {fileID: 0}

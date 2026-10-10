@@ -15,11 +15,21 @@ public class IngredientComponent : MonoBehaviour
     // Rat
     RatBehaviour rat;
 
+    public event Action OnSetup; 
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         ingredientInstance = new();
         draggable = GetComponent<DraggableComponent>();
+    }
+
+    private void Start()
+    {
+        if (data != null && spriteRenderer.sprite == null)
+        {
+            Setup(data);
+        }
     }
 
     private void OnGrabbedEvent(bool obj)
@@ -42,6 +52,8 @@ public class IngredientComponent : MonoBehaviour
 
         // Event Trigger
         EventManager.TriggerEvent(EventConstantNames.INGREDIENT_CREATED, new IngredientEventData(data, this, this));
+
+        OnSetup?.Invoke();
     }
 
     // This function will be used by cooking processors (pan, knife, microwave, etc.) and redirected to RuntimeInstance
