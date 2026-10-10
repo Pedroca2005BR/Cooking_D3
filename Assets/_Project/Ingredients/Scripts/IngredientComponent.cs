@@ -11,6 +11,7 @@ public class IngredientComponent : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     DraggableComponent draggable;
+    DropSystem dropSystem;
 
     // Rat
     RatBehaviour rat;
@@ -19,6 +20,7 @@ public class IngredientComponent : MonoBehaviour
 
     private void Awake()
     {
+        dropSystem = GetComponent<DropSystem>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         ingredientInstance = new();
         draggable = GetComponent<DraggableComponent>();
@@ -82,6 +84,7 @@ public class IngredientComponent : MonoBehaviour
         {
             this.rat = rat;
             draggable.enabled = false;
+            dropSystem.enabled = false;
             EventManager.TriggerEvent(EventConstantNames.INGREDIENT_PICKED_UP, new IngredientEventData(data, this, rat));
             return true;
         }
@@ -93,6 +96,7 @@ public class IngredientComponent : MonoBehaviour
     {
         rat = null;
         draggable.enabled = true;
+        dropSystem.enabled = true;
     }
 
     public void OnDisable()

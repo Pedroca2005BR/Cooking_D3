@@ -13,11 +13,29 @@ MonoBehaviour:
   m_Name: _Frango_e_Batata
   m_EditorClassIdentifier: Assembly-CSharp::RecipeSO
   ingredientesNecessarios:
-  - textToShow: 2 Batatas
+  - textToShow: Batata
     ingredient: {fileID: 11400000, guid: 678c55cbcddcf334da23bbe5477494d2, type: 2}
-    amount: 2
-  - textToShow: 2 Frangos
+    amount: 1
+  - textToShow: Frango
     ingredient: {fileID: 11400000, guid: 155a313774256d24fa748eca9b543ee4, type: 2}
-    amount: 2
-  howToMakeChecklist: []
+    amount: 1
+  howToMakeChecklist:
+  - textToShow: Corte a batata!
+    ingredient: {fileID: 11400000, guid: ff09564ea99e0f24d9502bf411171026, type: 2}
+    amount: 1
+  - textToShow: "Passe os peda\xE7os de frango no ovo e depois na farinha!"
+    ingredient: {fileID: 11400000, guid: 2d8d7cf4ec796e24093c282039df6ef6, type: 2}
+    amount: 1
+  - textToShow: Frite as batatas!
+    ingredient: {fileID: 11400000, guid: 98d0db746d78bb24394667e0d7d0448f, type: 2}
+    amount: 1
+  - textToShow: Frite o frango!
+    ingredient: {fileID: 11400000, guid: f4cdcd6beef7ead47885ef87e30ff94c, type: 2}
+    amount: 1
+  - textToShow: "Adicione o ketchup \xE0s batatas!"
+    ingredient: {fileID: 11400000, guid: c2107c33dc669b24e8281031718220eb, type: 2}
+    amount: 1
+  - textToShow: Coloque os frangos e as batatas no prato e entregue!
+    ingredient: {fileID: 11400000, guid: 52402c05f9c47184c9b67762434338f3, type: 2}
+    amount: 1
   perfectDish: {fileID: 0}
