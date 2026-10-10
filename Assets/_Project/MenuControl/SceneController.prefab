@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0297b3221694943b68ef814058fb8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneController
-  mainGameSceneName: MainGameScene
-  mainMenuName: MainMenuScene
+  mainGameSceneName: CenaJogo
+  mainMenuName: MainMenu

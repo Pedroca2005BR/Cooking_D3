@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690796eb4ae00ed47b727abfb372f307, type: 3}
+  m_Name: _Frango_com_Batata
+  m_EditorClassIdentifier: Assembly-CSharp::IdealIngredientData
+  ingredient: {fileID: 11400000, guid: 52402c05f9c47184c9b67762434338f3, type: 2}
+  processes: []
+  components:
+  - {fileID: 11400000, guid: 2f28ef96ae5e3b743b0a5a224f2ed7af, type: 2}
+  - {fileID: 11400000, guid: bb78d0ab731bd514b933a1c21bd44e26, type: 2}
