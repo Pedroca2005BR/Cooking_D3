@@ -19,6 +19,7 @@ public class AudioController : MonoBehaviour
     public void LoadVolume()
     {
         volumeSlider.value = PlayerPrefs.GetFloat("GlobalVolume", 1f);
+        AudioListener.volume = volumeSlider.value;
     }
 
     public void SaveVolume()

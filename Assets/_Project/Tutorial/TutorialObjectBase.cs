@@ -9,6 +9,7 @@ public abstract class TutorialObjectBase : MonoBehaviour
     public void SetController(TutorialController controller)
     {
         this.controller = controller;
+        StopStep();
     }
 
     public virtual void StartStep()
