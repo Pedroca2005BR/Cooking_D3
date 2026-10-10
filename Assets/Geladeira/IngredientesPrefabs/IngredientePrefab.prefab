@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4717768811926360161}
   - component: {fileID: 3619525620191082526}
   - component: {fileID: 6348210114520417933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: IngredientePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9faf2f166a5d75947a159981691815f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediente
+  data: {fileID: 0}
 --- !u!114 &4717768811926360161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c8a831a107efb428e3e4b30462c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableComponent
+  useDamping: 1
+  damping: 0.05
 --- !u!212 &3619525620191082526
 SpriteRenderer:
   serializedVersion: 2
