@@ -9,6 +9,8 @@ public class RecipeSO : ScriptableObject
     public StepData[] howToMakeChecklist;
 
     public IdealIngredientData perfectDish;
+
+    public Sprite[] variacoesDoPratoPronto = new Sprite[4];
 }
 
 [System.Serializable]
