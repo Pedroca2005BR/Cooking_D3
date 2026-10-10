@@ -17,6 +17,10 @@ public class RatBehaviour : MonoBehaviour
     bool hasFood = false;
     Transform desiredFood;
     private RatSpawner spawner;
+    bool isDead = false;
+
+    [SerializeField] float soundCooldown = 3f;
+    float currentCool = 0f;
 
     private void Awake()
     {
@@ -40,6 +44,11 @@ public class RatBehaviour : MonoBehaviour
         EventManager.Unsubscribe(EventConstantNames.INGREDIENT_PICKED_UP, OnIngredientVanished);
     }
 
+    private void Start()
+    {
+        AudioManager.instance.PlaySound("Rato");
+    }
+
 
     // Mini State Machine for the rats behaviour
     private void Update()
@@ -57,6 +66,13 @@ public class RatBehaviour : MonoBehaviour
         if (desiredFood == null)
         {
             GoHome();
+        }
+
+        currentCool += Time.deltaTime;
+        if (currentCool >= soundCooldown && !isDead)
+        {
+            currentCool = 0;
+            AudioManager.instance.PlaySound("Rato");
         }
     }
 
@@ -141,6 +157,8 @@ public class RatBehaviour : MonoBehaviour
             desiredFood.SetParent(null);
         }
 
+        AudioManager.instance.StopSound("Rato");
+        isDead = true;
         animator.SetTrigger("Dead");
         Destroy(gameObject, 3f);
         agent.enabled = false;

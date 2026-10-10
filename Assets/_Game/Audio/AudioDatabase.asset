@@ -19,3 +19,15 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 1
+  - audioSource: {fileID: 0}
+    name: Fritar
+    clip: {fileID: 8300000, guid: e010c1907c18e374db21a667ca6e04fd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+  - audioSource: {fileID: 0}
+    name: Rato
+    clip: {fileID: 8300000, guid: 6325b51aca8a0214ba65b27f5c4b392a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0

@@ -27,7 +27,7 @@ public class RatSpawner : MonoBehaviour
     List<RatBehaviour> rats = new();
     List<IngredientComponent> ingredients = new List<IngredientComponent>();
 
-    private void Start()
+    private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = empty;
