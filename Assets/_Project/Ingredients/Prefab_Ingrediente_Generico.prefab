@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72f6fbad711623409bbcf3628bc636c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Outline2D
-  espessuraContorno: 5
+  espessuraContorno: 1
 --- !u!114 &524857845267838375
 MonoBehaviour:
   m_ObjectHideFlags: 0
