@@ -16,6 +16,6 @@ MonoBehaviour:
   baseSprite: {fileID: -5177369670109440376, guid: 8ea8fbe8542b7d94c9f46924c39e75a7, type: 3}
   possibleConversions:
   - processNeeded: 7
-    minimumScoreNeeded: 0
+    minimumScoreNeeded: 20
     newIngredientData: {fileID: 11400000, guid: 98d0db746d78bb24394667e0d7d0448f, type: 2}
   junkIngredient: {fileID: 11400000, guid: f430897642346684299410c868b7ff07, type: 2}

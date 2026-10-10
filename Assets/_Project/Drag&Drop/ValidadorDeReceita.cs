@@ -17,4 +17,13 @@ public static class ValidadorDeReceita
         FusionResult resultado = fuser.Evaluate(ingredientesParaTestar, out _);
         return fuser.CanFuse(ingredientesParaTestar) || resultado == FusionResult.Incomplete;
     }
+
+    // Validador estrito para Temperos
+    public static bool AceitaProcessoEstrito(IngredientComponent ingrediente, CookingProcess processoDaBancada)
+    {
+        if (ingrediente == null || ingrediente.data == null) return false;
+
+        // Usa a sua própria lógica do BaseIngredientData: se retornar -1, o processo não existe para este item
+        return ingrediente.data.GetScoreNeeded(processoDaBancada) != -1;
+    }
 }
