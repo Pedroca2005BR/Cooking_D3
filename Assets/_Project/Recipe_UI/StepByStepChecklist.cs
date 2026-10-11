@@ -34,7 +34,7 @@ public class StepByStepChecklist : MonoBehaviour
     [SerializeField] Button toggleButton;
     [SerializeField] RectTransform arrowIcon;     // opcional
     [SerializeField] bool startCollapsed;
-    [SerializeField] float advanceDelay = 0.6f;   // dá tempo de ver o riscado antes de trocar o passo atual (0 = imediato)
+    [SerializeField] float advanceDelay = 0.6f;   // dï¿½ tempo de ver o riscado antes de trocar o passo atual (0 = imediato)
 
     List<StepCollapseAnimator> animators = new();
     bool collapsed;
@@ -70,6 +70,11 @@ public class StepByStepChecklist : MonoBehaviour
 
     private int GetStepIndexByIngredient(BaseIngredientData ingredient)
     {
+        if (checkListData == null || checkListData.howToMakeChecklist == null) 
+        {
+            return -1;
+        }
+        
         for(int i = 0; i < checkListData.howToMakeChecklist.Length; i++)
         {
             if(checkListData.howToMakeChecklist[i].ingredient == ingredient)
@@ -109,7 +114,7 @@ public class StepByStepChecklist : MonoBehaviour
             animators[i].SetVisible(!collapsed || i == currentStepIndex, instant);
     }
 
-    // Avança até o primeiro passo não concluído (ou o último, se tudo estiver concluído)
+    // Avanï¿½a atï¿½ o primeiro passo nï¿½o concluï¿½do (ou o ï¿½ltimo, se tudo estiver concluï¿½do)
     void AdvanceCurrentStep()
     {
         int previous = currentStepIndex;

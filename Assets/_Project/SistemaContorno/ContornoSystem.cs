@@ -7,6 +7,7 @@ public class ContornoSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     private Outline2D outliner;
     private SpriteRenderer spriteRender;
+    private IngredientComponent ingrediente;
     
     private string nomeExibicao;
     private bool estaArrastando = false;
@@ -14,6 +15,28 @@ public class ContornoSystem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private void Awake() {
         outliner = GetComponent<Outline2D>();
         spriteRender = GetComponent<SpriteRenderer>();
+        ingrediente = GetComponent<IngredientComponent>();
+        DescobrirNomeAutomaticamente();
+    }
+
+    private void OnEnable() {
+        if (ingrediente != null) {
+            // Subscreve ao evento para escutar as injeções de dados da geladeira
+            ingrediente.OnSetup += ForcarAtualizacaoDeNome;
+        }
+    }
+
+    private void OnDisable() {
+        if (ingrediente != null) {
+            // Remove a subscrição para evitar fugas de memória (memory leaks)
+            ingrediente.OnSetup -= ForcarAtualizacaoDeNome;
+        }
+    }
+
+    // Método disparado pelo evento OnSetup
+    private void ForcarAtualizacaoDeNome() {
+        // Limpa a variável para passar na verificação de segurança
+        nomeExibicao = string.Empty; 
         DescobrirNomeAutomaticamente();
     }
 

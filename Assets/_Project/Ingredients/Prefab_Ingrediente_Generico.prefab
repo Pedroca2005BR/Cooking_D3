@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1862860943160052704}
   - component: {fileID: 524857845267838375}
   - component: {fileID: -5545883907356882303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prefab_Ingrediente_Generico
   m_TagString: Untagged
   m_Icon: {fileID: 0}

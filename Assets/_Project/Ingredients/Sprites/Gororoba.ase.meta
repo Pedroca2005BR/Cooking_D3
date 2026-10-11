@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639272677201892671
+  platformSettingsDirtyTick: 639273047838112023
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -129,8 +129,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Gororoba
     originalName: 
-    pivot: {x: 0.4814815, y: -0.5}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 27
       height: 14
-    spriteID: e1c9b27f19f81e34b850ca9d8283fd71
+    spriteID: 7a42ca742de134d4d829704155011df2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -171,7 +171,7 @@ ScriptedImporter:
         y: 7
         width: 27
         height: 14
-      spriteId: e1c9b27f19f81e34b850ca9d8283fd71
+      spriteId: 7a42ca742de134d4d829704155011df2
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

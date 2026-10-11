@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Gororoba
   m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
   baseName: Gororoba
-  baseSprite: {fileID: 7891202080167940511, guid: c93427d1fda4e464d971de2fd757326f, type: 3}
+  baseSprite: {fileID: -4085878243522934298, guid: c93427d1fda4e464d971de2fd757326f, type: 3}
   possibleConversions: []
   junkIngredient: {fileID: 11400000}

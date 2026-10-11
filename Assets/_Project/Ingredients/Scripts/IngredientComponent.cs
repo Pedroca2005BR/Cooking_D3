@@ -13,6 +13,8 @@ public class IngredientComponent : MonoBehaviour
     DraggableComponent draggable;
     DropSystem dropSystem;
 
+    IngredienteFogao ingredientef;
+
     // Rat
     RatBehaviour rat;
 
@@ -24,6 +26,7 @@ public class IngredientComponent : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         ingredientInstance = new();
         draggable = GetComponent<DraggableComponent>();
+        ingredientef = GetComponent<IngredienteFogao>();
     }
 
     private void Start()
@@ -54,6 +57,8 @@ public class IngredientComponent : MonoBehaviour
 
         // Event Trigger
         EventManager.TriggerEvent(EventConstantNames.INGREDIENT_CREATED, new IngredientEventData(data, this, this));
+
+        ingredientef.AjustarColisor();
 
         OnSetup?.Invoke();
     }
