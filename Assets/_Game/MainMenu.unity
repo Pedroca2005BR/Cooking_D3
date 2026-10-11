@@ -1134,19 +1134,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 411661491812741861, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 173.59
       objectReference: {fileID: 0}
     - target: {fileID: 411661491812741861, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 25
+      value: 27.19
       objectReference: {fileID: 0}
     - target: {fileID: 411661491812741861, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9.4
+      value: 6.195
       objectReference: {fileID: 0}
     - target: {fileID: 411661491812741861, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 16.9
+      value: 13.595
       objectReference: {fileID: 0}
     - target: {fileID: 744105686225016612, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_fontStyle
@@ -1182,7 +1182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335844621560970518, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1342136916315790748, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_Sprite
@@ -1195,6 +1195,22 @@ PrefabInstance:
     - target: {fileID: 1449387004224755485, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865639405853097133, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 185.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865639405853097133, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 64.877
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865639405853097133, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0000076294
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865639405853097133, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -79
       objectReference: {fileID: 0}
     - target: {fileID: 3328892558347739714, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_Pivot.x
@@ -1276,6 +1292,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5897894602097627174, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897894602097627174, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4571828015118065507, guid: b0053fb7f36f25d41baadd8ad5d11e09, type: 3}
     - target: {fileID: 6690748051088665794, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
       propertyPath: m_Name
       value: OptionsController
@@ -1307,6 +1331,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7677751503838967508, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
+    - {fileID: 8316477654919419446, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
+    - {fileID: 1654287481079145299, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79efe1d9b70f4624cb71b72c3e77a635, type: 3}
@@ -1414,6 +1440,10 @@ PrefabInstance:
     - target: {fileID: 1562044132131775187, guid: c721ba253a4ea7e40ab5b4224c46cc6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073101447459207773, guid: c721ba253a4ea7e40ab5b4224c46cc6f, type: 3}
+      propertyPath: mainGameSceneName
+      value: sceneIntro
       objectReference: {fileID: 0}
     - target: {fileID: 7019377010135945831, guid: c721ba253a4ea7e40ab5b4224c46cc6f, type: 3}
       propertyPath: m_Name

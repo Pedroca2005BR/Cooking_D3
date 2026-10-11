@@ -31,3 +31,15 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+  - audioSource: {fileID: 0}
+    name: Boil
+    clip: {fileID: 8300000, guid: dba1c22e2e42ce64486ac40bb1942a8b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+  - audioSource: {fileID: 0}
+    name: Cut
+    clip: {fileID: 8300000, guid: cbae6d8243af9d44e88ad3c5dc9a32cd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0

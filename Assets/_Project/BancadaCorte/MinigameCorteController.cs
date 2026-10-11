@@ -106,6 +106,11 @@ public class MinigameCorte : MonoBehaviour
     {
         if (!rodando || congelado) return;
 
+        if (AudioManager.instance != null) 
+        {
+            AudioManager.instance.PlaySound("Cut");
+        }
+
         if (posCursor >= posZonaAcerto && posCursor <= (posZonaAcerto + larguraZona))
         {
             cortesRestantes--;

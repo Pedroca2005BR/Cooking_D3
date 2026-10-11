@@ -31,7 +31,29 @@ MonoBehaviour:
   - textToShow: "1 Carne mo\xEDda"
     ingredient: {fileID: 11400000, guid: 20c26faeacdb6934c9c94b7505a16927, type: 2}
     amount: 1
-  howToMakeChecklist: []
+  howToMakeChecklist:
+  - textToShow: Corte a cebola!
+    ingredient: {fileID: 11400000, guid: 66e7ecbd837a3404a8b5bf5b7aba1ae8, type: 2}
+    amount: 1
+  - textToShow: Corte o alho!
+    ingredient: {fileID: 11400000, guid: 2532fc235f2bb394db71fe426fe1f07f, type: 2}
+    amount: 1
+  - textToShow: Corte o tomate!
+    ingredient: {fileID: 11400000, guid: 1eef7172b8c2d3d49afa9c7ce547f0be, type: 2}
+    amount: 1
+  - textToShow: Coloque o molho de tomate na panela de mistura. Depois adicione a
+      cebola, o alho e o tomate picados.
+    ingredient: {fileID: 11400000, guid: f56062c22ec448f4f9ff6f0541df5adf, type: 2}
+    amount: 1
+  - textToShow: "Doure a carde mo\xEDda e a adicione ao molho de tomate."
+    ingredient: {fileID: 11400000, guid: 451b61f9cb4d8bb4ca2a992e1dfc181d, type: 2}
+    amount: 1
+  - textToShow: "Cozinhe o espaguete at\xE9 ficar pronto!"
+    ingredient: {fileID: 11400000, guid: 2cabcb935af3a5e4caa7b2a9bce265d3, type: 2}
+    amount: 1
+  - textToShow: Junte o espaguete e o molho no prato!
+    ingredient: {fileID: 11400000, guid: 2cabcb935af3a5e4caa7b2a9bce265d3, type: 2}
+    amount: 1
   perfectDish: {fileID: 11400000, guid: 7b2214cbeca9817479980c1e1be17176, type: 2}
   variacoesDoPrato:
   - {fileID: -956192198663589749, guid: 8bab471ed6074754aa7046611da29e01, type: 3}

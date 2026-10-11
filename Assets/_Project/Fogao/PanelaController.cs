@@ -21,6 +21,8 @@ public class PanelaController : MonoBehaviour, IReceberIngrediente
     private IngredienteFogao ingrediente;
     [SerializeField] private BaseIngredientData gororoba;
 
+    private string audioAtual = "";
+
     private void Awake() {
         processador = GetComponent<FoodProcessorComponent>();
     }
@@ -28,6 +30,11 @@ public class PanelaController : MonoBehaviour, IReceberIngrediente
     private void Start()
     {
         OnConfigurarUI?.Invoke(aparecerEmCima, distanciaY);
+    }
+
+    private void OnDisable() 
+    {
+        PararAudioProcesso();
     }
     
     private void Update() { 
@@ -58,6 +65,9 @@ public class PanelaController : MonoBehaviour, IReceberIngrediente
             ingrediente.DefinirProcessador(processador);
 
             OnIniciarUI?.Invoke();
+
+            TocarAudioProcesso();
+
         }else //caso a panela não esteja vazia
         {
             Debug.Log("Mais de um ingrediente na panela de processos... transformando em gororoba!!!!");
@@ -82,6 +92,45 @@ public class PanelaController : MonoBehaviour, IReceberIngrediente
             ingrediente = null;
             
             OnPausarUI?.Invoke();
+
+            PararAudioProcesso();
+        }
+    }
+
+    private void TocarAudioProcesso()
+    {
+        // Lê o enum do processo atual e converte para texto
+        string nomeProcesso = processador.ProcessoAtual.ToString();
+        
+        switch(nomeProcesso) 
+        {
+            case "Fritar":  // Nome do seu Enum para Fritar/Dourar
+                audioAtual = "Fritar"; // Nome exato do som no AudioManager
+                break;
+            case "Dourar":  // Nome do seu Enum para Fritar/Dourar
+                audioAtual = "Fritar"; // Nome exato do som no AudioManager
+                break;
+            case "Boil": // Nome do seu Enum para Cozinhar/Ferver
+                audioAtual = "Boil"; 
+                break;
+            default:
+                audioAtual = ""; // Se for um processo sem som (ex: cortar)
+                break;
+        }
+
+        if (!string.IsNullOrEmpty(audioAtual)) 
+        {
+            AudioManager.instance.PlaySound(audioAtual);
+        }
+    }
+
+    // Para o som de forma segura
+    private void PararAudioProcesso()
+    {
+        if (!string.IsNullOrEmpty(audioAtual)) 
+        {
+            AudioManager.instance.StopSound(audioAtual);
+            audioAtual = ""; // Limpa a variável para evitar bugs
         }
     }
 }
