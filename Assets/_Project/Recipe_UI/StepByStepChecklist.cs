@@ -74,7 +74,7 @@ public class StepByStepChecklist : MonoBehaviour
         {
             return -1;
         }
-        
+
         for(int i = 0; i < checkListData.howToMakeChecklist.Length; i++)
         {
             if(checkListData.howToMakeChecklist[i].ingredient == ingredient)
@@ -219,6 +219,9 @@ public class StepByStepChecklist : MonoBehaviour
             Debug.LogError($"{EventConstantNames.INGREDIENT_CREATED} has different event data type");
             return;
         }
+
+        DraggableComponent arrasto = newObj.ingredientComponent.GetComponent<DraggableComponent>();
+        if (arrasto != null && !arrasto.enabled) return;
 
         int stepIndex = GetStepIndexByIngredient(newObj.ingredientData);
 

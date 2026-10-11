@@ -91,6 +91,7 @@ public class RatSpawner : MonoBehaviour
     public void GiveObjectives()
     {
         rats.RemoveAll(r => r == null);
+        ingredients.RemoveAll(i => i == null);
 
         if (ingredients.Count > 0)
         {

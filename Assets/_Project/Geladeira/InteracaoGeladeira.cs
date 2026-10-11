@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Pedroca2005BR.Utilities;
 
 public class InteracaoGeladeira : MonoBehaviour, IPointerDownHandler
 {
@@ -19,6 +20,12 @@ public class InteracaoGeladeira : MonoBehaviour, IPointerDownHandler
 
             DraggableComponent arrasto = GetComponent<DraggableComponent>();
             if (arrasto != null) arrasto.enabled = true;
+
+            IngredientComponent comp = GetComponent<IngredientComponent>();
+            if (comp != null)
+            {
+                EventManager.TriggerEvent(EventConstantNames.INGREDIENT_CREATED, new IngredientEventData(comp.data, comp, comp));
+            }
             
             // 2. Destrói este script de clique para o item voltar a ser normal
             Destroy(this);

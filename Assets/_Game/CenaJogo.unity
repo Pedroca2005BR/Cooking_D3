@@ -3094,6 +3094,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1012529434952403502, guid: 38f262f1a454c0a4191fd01313be3c98, type: 3}
+      propertyPath: database
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dfbb19838dee5e4aaa8163dce86c1dc, type: 2}
     - target: {fileID: 1532428618200576935, guid: 38f262f1a454c0a4191fd01313be3c98, type: 3}
       propertyPath: m_Name
       value: Checklist Canvas
@@ -3308,6 +3312,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300076726}
   m_CullTransparentMesh: 1
+--- !u!1 &1340818796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6448037992097508195, guid: e736c06f5f17f694d97d7c9d591d36a6, type: 3}
+  m_PrefabInstance: {fileID: 7013539510353695893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1340818803
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340818796}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!114 &1413950467 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2822226493777227562, guid: 17ffc24cdebc2e24caed57a136a890bb, type: 3}
@@ -5935,12 +5960,20 @@ PrefabInstance:
       value: BancadaMontagem
       objectReference: {fileID: 0}
     - target: {fileID: 3344176226527249056, guid: 94dafe6bc2aefbc4c9423a3a48aeade3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344176226527249056, guid: 94dafe6bc2aefbc4c9423a3a48aeade3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344176226527249056, guid: 94dafe6bc2aefbc4c9423a3a48aeade3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.652
+      value: 3.6872
       objectReference: {fileID: 0}
     - target: {fileID: 3344176226527249056, guid: 94dafe6bc2aefbc4c9423a3a48aeade3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.119
+      value: 2.1976
       objectReference: {fileID: 0}
     - target: {fileID: 3630755858895821764, guid: 94dafe6bc2aefbc4c9423a3a48aeade3, type: 3}
       propertyPath: m_Radius
@@ -6304,7 +6337,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6448037992097508195, guid: e736c06f5f17f694d97d7c9d591d36a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1340818803}
   m_SourcePrefab: {fileID: 100100000, guid: e736c06f5f17f694d97d7c9d591d36a6, type: 3}
 --- !u!224 &7668286114202870727
 RectTransform:

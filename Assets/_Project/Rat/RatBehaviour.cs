@@ -28,6 +28,9 @@ public class RatBehaviour : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         spawner = GetComponentInParent<RatSpawner>();
+
+        if (home == null && spawner != null) home = spawner.transform;
+
     }
 
     // This class subscribe to events to control if the food it wants is still available or not. If not, it may go after another food.

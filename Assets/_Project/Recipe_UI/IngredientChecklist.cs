@@ -107,6 +107,9 @@ public class IngredientChecklist : MonoBehaviour
             return;
         }
 
+        DraggableComponent arrasto = newObj.ingredientComponent.GetComponent<DraggableComponent>();
+        if (arrasto != null && !arrasto.enabled) return;
+
         int stepIndex = GetStepIndexByIngredient(newObj.ingredientData);
 
         if (stepIndex != -1)
