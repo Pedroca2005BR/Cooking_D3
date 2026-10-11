@@ -1,0 +1,322 @@
+fileFormatVersion: 2
+guid: fc1a6ad68ce759e4680f5b6b091a2089
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6133188519413068325
+    second: estrelas_spritesheet_0
+  - first:
+      213: -8520370035612903112
+    second: estrelas_spritesheet_1
+  - first:
+      213: 3391865650951990216
+    second: estrelas_spritesheet_2
+  - first:
+      213: -807926860857472327
+    second: estrelas_spritesheet_3
+  - first:
+      213: 4506097850903147279
+    second: estrelas_spritesheet_4
+  - first:
+      213: 172643072697239444
+    second: estrelas_spritesheet_5
+  - first:
+      213: 3618303231710070652
+    second: estrelas_spritesheet_6
+  - first:
+      213: -4460018419186500669
+    second: estrelas_spritesheet_7
+  - first:
+      213: 4468885831477167905
+    second: estrelas_spritesheet_8
+  - first:
+      213: -2115222134601928979
+    second: estrelas_spritesheet_9
+  - first:
+      213: -6117776964789324588
+    second: estrelas_spritesheet_10
+  - first:
+      213: 4216507557271301700
+    second: estrelas_spritesheet_11
+  - first:
+      213: 8603716037196639633
+    second: estrelas_spritesheet_12
+  - first:
+      213: -1174215347308645848
+    second: estrelas_spritesheet_13
+  - first:
+      213: -7036887827413038286
+    second: estrelas_spritesheet_14
+  - first:
+      213: 4731507105312321697
+    second: estrelas_spritesheet_15
+  - first:
+      213: 7615781187428584567
+    second: estrelas_spritesheet_16
+  - first:
+      213: 8427162475884432983
+    second: estrelas_spritesheet_17
+  - first:
+      213: 5291915731816538458
+    second: estrelas_spritesheet_18
+  - first:
+      213: 783086344696511185
+    second: estrelas_spritesheet_19
+  - first:
+      213: 9181772176561017623
+    second: estrelas_spritesheet_20
+  - first:
+      213: -7266112361631537615
+    second: estrelas_spritesheet_21
+  - first:
+      213: 6511381871773546488
+    second: estrelas_spritesheet_22
+  - first:
+      213: 3259256511798504255
+    second: estrelas_spritesheet_23
+  - first:
+      213: 5097403372103969067
+    second: estrelas_spritesheet_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: estrelas_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 78
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 522be10a6767d1550800000000000000
+      internalID: 6133188519413068325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: estrelas_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 78
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8391960789091c980800000000000000
+      internalID: -8520370035612903112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: estrelas_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 78
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cba7d2b6d3521f20800000000000000
+      internalID: 3391865650951990216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: estrelas_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 78
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ba0816fccaa9c4f0800000000000000
+      internalID: -807926860857472327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: estrelas_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 78
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f03bb3efe10e88e30800000000000000
+      internalID: 4506097850903147279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 974312b026004d24a8b4b13672721e7d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":78.0,"y":24.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      estrelas_spritesheet_0: 6133188519413068325
+      estrelas_spritesheet_1: -8520370035612903112
+      estrelas_spritesheet_2: 3391865650951990216
+      estrelas_spritesheet_3: -807926860857472327
+      estrelas_spritesheet_4: 4506097850903147279
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

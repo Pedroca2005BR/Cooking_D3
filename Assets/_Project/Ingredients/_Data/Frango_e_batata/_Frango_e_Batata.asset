@@ -38,4 +38,9 @@ MonoBehaviour:
   - textToShow: Coloque os frangos e as batatas no prato e entregue!
     ingredient: {fileID: 11400000, guid: 52402c05f9c47184c9b67762434338f3, type: 2}
     amount: 1
-  perfectDish: {fileID: 0}
+  perfectDish: {fileID: 11400000, guid: 0dffc0ae6d72e85439e9c82121ffaca4, type: 2}
+  variacoesDoPrato:
+  - {fileID: 2625297672677925411, guid: e5dd9bec6e3cb49499d3a6a8c65e6611, type: 3}
+  - {fileID: -4002626679811380496, guid: e5dd9bec6e3cb49499d3a6a8c65e6611, type: 3}
+  - {fileID: -4686129521607515616, guid: e5dd9bec6e3cb49499d3a6a8c65e6611, type: 3}
+  - {fileID: -1530953808514948037, guid: e5dd9bec6e3cb49499d3a6a8c65e6611, type: 3}

@@ -32,4 +32,9 @@ MonoBehaviour:
     ingredient: {fileID: 11400000, guid: 20c26faeacdb6934c9c94b7505a16927, type: 2}
     amount: 1
   howToMakeChecklist: []
-  perfectDish: {fileID: 0}
+  perfectDish: {fileID: 11400000, guid: 7b2214cbeca9817479980c1e1be17176, type: 2}
+  variacoesDoPrato:
+  - {fileID: -956192198663589749, guid: 8bab471ed6074754aa7046611da29e01, type: 3}
+  - {fileID: 2329503867107163086, guid: 8bab471ed6074754aa7046611da29e01, type: 3}
+  - {fileID: -5189183564691907671, guid: 8bab471ed6074754aa7046611da29e01, type: 3}
+  - {fileID: 5580425050337113142, guid: 8bab471ed6074754aa7046611da29e01, type: 3}

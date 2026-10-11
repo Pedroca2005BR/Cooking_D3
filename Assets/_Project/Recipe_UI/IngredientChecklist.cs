@@ -49,6 +49,7 @@ public class IngredientChecklist : MonoBehaviour
 
     private int GetStepIndexByIngredient(BaseIngredientData ingredient)
     {
+        if(checkListData == null) return -1;
         for (int i = 0; i < checkListData.ingredientesNecessarios.Length; i++)
         {
             if (checkListData.ingredientesNecessarios[i].ingredient == ingredient)

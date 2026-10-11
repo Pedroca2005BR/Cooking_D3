@@ -10,7 +10,7 @@ public class RecipeSO : ScriptableObject
 
     public IdealIngredientData perfectDish;
 
-    public Sprite[] variacoesDoPratoPronto = new Sprite[4];
+    public Sprite[] variacoesDoPrato = new Sprite[4];
 }
 
 [System.Serializable]
