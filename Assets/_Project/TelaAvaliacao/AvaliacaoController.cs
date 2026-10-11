@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class AvaliacaoController : MonoBehaviour
 {
@@ -62,6 +64,8 @@ public class AvaliacaoController : MonoBehaviour
         int notaFinalInteira = Mathf.RoundToInt(notaNormalizada);
         // 5. Envia para a UI
         avaliacaoUI.MostrarTela(notaFinalInteira, spriteEstrela, spriteVelha, spritePrato);
+
+        StartCoroutine(EncerrarJogoRoutine());
     }
 
     private int ObterIndiceDaVariacao(int estrelas)
@@ -70,5 +74,14 @@ public class AvaliacaoController : MonoBehaviour
         if (estrelas == 2 || estrelas == 3) return 1; // Estado mediano
         if (estrelas == 4) return 2; // Estado bom
         return 3; // Estado perfeito
+    }
+
+    private IEnumerator EncerrarJogoRoutine()
+    {
+        // Pausa a execução deste bloco por 10 segundos em tempo real
+        yield return new WaitForSeconds(10f);
+
+        // Carrega o menu principal (Cena 0 nas configurações do Build)
+        SceneManager.LoadScene(0);
     }
 }
