@@ -71,9 +71,15 @@ public class FlySwatter : MonoBehaviour, IInteragivel
 
     public void MostraInput()
     {
-        if (podeInteragir && objetoInputInst == null)
-        {
-            objetoInputInst = Instantiate(objetoInputPrefab, transform.position + (Vector3)inputOffset, Quaternion.identity);
+        if (podeInteragir) {
+            if(objetoInputInst == null)
+            {
+                objetoInputInst = Instantiate(objetoInputPrefab, transform.position + (Vector3)inputOffset, Quaternion.identity);
+
+                objetoInputInst.transform.SetParent(transform);
+            }
+
+            objetoInputInst.SetActive(true);
         }
     }
 
@@ -81,8 +87,7 @@ public class FlySwatter : MonoBehaviour, IInteragivel
     {
         if (objetoInputInst != null)
         {
-            Destroy(objetoInputInst);
-            objetoInputInst = null;
+            objetoInputInst.SetActive(false);
         }
     }
 
