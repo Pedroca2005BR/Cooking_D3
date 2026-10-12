@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IdealIngredientData
   ingredient: {fileID: 11400000, guid: f4cdcd6beef7ead47885ef87e30ff94c, type: 2}
   processes:
+  - process: 3
+    idealScore: 30
+  - process: 6
+    idealScore: 0
   - process: 7
-    idealScore: 40
+    idealScore: 20
   components: []

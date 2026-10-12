@@ -23,11 +23,6 @@ public class PlateComponent : MonoBehaviour
         if (collision.TryGetComponent<IngredientComponent>(out var ingredient))
         {
             ingredientsOnPlate.Add(ingredient);
-
-            if (fuser.TryFusing(ingredientsOnPlate.ToArray(), out var fused))
-            {
-                ingredientsOnPlate.Clear();
-            }
         }
     }
 
@@ -51,26 +46,35 @@ public class PlateComponent : MonoBehaviour
         // Remove ingredientes que foram destruídos enquanto estavam no prato
         ingredientsOnPlate.RemoveAll(i => i == null);
 
-        List<IngredientRuntimeInstance> ingredientInstances = new List<IngredientRuntimeInstance>();
-        foreach (var ingredient in ingredientsOnPlate)
-        {
-            ingredientInstances.Add(ingredient.ingredientInstance);
-        }
-
-        var actualInstance = new IngredientRuntimeInstance();
-        actualInstance.Data = recipe.perfectDish.ingredient; 
-        actualInstance.SetBaseComponents(ingredientInstances.ToArray());
-
-        var actual = ingredientsOnPlate.Count == 1
-            ? ingredientsOnPlate[0].ingredientInstance   // sem o embrulho
-            : actualInstance;
-
         // Calculate score based on the recipe and ingredients on the plate
         float score;
-        if (actual.Data == fuser.junkIngredient) score = 0;
-        else score = ScoreCalculator.Calculate(actual, recipe.perfectDish);
+        if (fuser.TryFusing(ingredientsOnPlate.ToArray(), out var combined))
+        {
+            var combinedComp = combined.GetComponent<IngredientComponent>();
 
-        Debug.Log(ScoreCalculator.Dump(actual));
+            if (combinedComp.data == fuser.junkIngredient) score = 0;
+            else score = ScoreCalculator.Calculate(combinedComp.ingredientInstance, recipe.perfectDish);
+
+            Debug.Log(ScoreCalculator.Dump(combinedComp.ingredientInstance));
+        }
+        else
+        {
+            IngredientRuntimeInstance[] instances = new IngredientRuntimeInstance[ingredientsOnPlate.Count]; 
+            for(int i = 0; i < instances.Length; i++)
+            {
+                instances[i] = ingredientsOnPlate[i].ingredientInstance;
+            }
+
+            var falseDish = new IngredientRuntimeInstance();
+            falseDish.Data = null;
+            falseDish.SetBaseComponents(instances);
+
+            score = ScoreCalculator.Calculate(falseDish, recipe.perfectDish);
+            Debug.Log(ScoreCalculator.Dump(falseDish));
+        }
+
+
+        
 
         // Invoke the event to notify listeners about the score
         OnScoreCalculated?.Invoke(score);

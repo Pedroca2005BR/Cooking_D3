@@ -13,13 +13,27 @@ MonoBehaviour:
   m_Name: _FusionTree
   m_EditorClassIdentifier: Assembly-CSharp::FusionTree
   possibleFusions:
+  - compositeIngredient: {fileID: 11400000, guid: 451b61f9cb4d8bb4ca2a992e1dfc181d, type: 2}
+    components:
+    - {fileID: 11400000, guid: f56062c22ec448f4f9ff6f0541df5adf, type: 2}
+    - {fileID: 11400000, guid: ffba3b4f090aa6f48a0d9469255f8ad2, type: 2}
   - compositeIngredient: {fileID: 11400000, guid: f56062c22ec448f4f9ff6f0541df5adf, type: 2}
     components:
     - {fileID: 11400000, guid: 66e7ecbd837a3404a8b5bf5b7aba1ae8, type: 2}
     - {fileID: 11400000, guid: 2532fc235f2bb394db71fe426fe1f07f, type: 2}
     - {fileID: 11400000, guid: bd97124eb3cde584d955c80f9cbd843e, type: 2}
     - {fileID: 11400000, guid: 1eef7172b8c2d3d49afa9c7ce547f0be, type: 2}
-  - compositeIngredient: {fileID: 11400000, guid: 451b61f9cb4d8bb4ca2a992e1dfc181d, type: 2}
+  - compositeIngredient: {fileID: 11400000, guid: f56062c22ec448f4f9ff6f0541df5adf, type: 2}
     components:
-    - {fileID: 11400000, guid: f56062c22ec448f4f9ff6f0541df5adf, type: 2}
-    - {fileID: 11400000, guid: ffba3b4f090aa6f48a0d9469255f8ad2, type: 2}
+    - {fileID: 11400000, guid: 66e7ecbd837a3404a8b5bf5b7aba1ae8, type: 2}
+    - {fileID: 11400000, guid: 2532fc235f2bb394db71fe426fe1f07f, type: 2}
+    - {fileID: 11400000, guid: d7bc99befb0d0514199741adc440b550, type: 2}
+    - {fileID: 11400000, guid: 1eef7172b8c2d3d49afa9c7ce547f0be, type: 2}
+  - compositeIngredient: {fileID: 11400000, guid: f0ccc371cd036e74d8bbb405dfe345aa, type: 2}
+    components:
+    - {fileID: 11400000, guid: 451b61f9cb4d8bb4ca2a992e1dfc181d, type: 2}
+    - {fileID: 11400000, guid: 2cabcb935af3a5e4caa7b2a9bce265d3, type: 2}
+  - compositeIngredient: {fileID: 11400000, guid: 52402c05f9c47184c9b67762434338f3, type: 2}
+    components:
+    - {fileID: 11400000, guid: f4cdcd6beef7ead47885ef87e30ff94c, type: 2}
+    - {fileID: 11400000, guid: c2107c33dc669b24e8281031718220eb, type: 2}

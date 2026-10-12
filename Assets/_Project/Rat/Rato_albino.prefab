@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7356572075232324771}
   - component: {fileID: -3492470609894619416}
   - component: {fileID: -3625604425476476377}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rato_albino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.4
-  m_Speed: 2.8
+  m_Speed: 2.4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4765130208377382230}
   - component: {fileID: 4737627002500985509}
   - component: {fileID: 7366965310733444145}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8944362304904439685, guid: d45a3121b3da09e45992dd17ff73ad7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

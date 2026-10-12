@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690796eb4ae00ed47b727abfb372f307, type: 3}
   m_Name: _IdealFinalMacarrao
   m_EditorClassIdentifier: Assembly-CSharp::IdealIngredientData
-  ingredient: {fileID: 0}
+  ingredient: {fileID: 11400000, guid: f0ccc371cd036e74d8bbb405dfe345aa, type: 2}
   processes: []
-  components: []
+  components:
+  - {fileID: 11400000, guid: 76d37536d1522824ca4118f84366a580, type: 2}
+  - {fileID: 11400000, guid: 55b0c78f1fd82f845aa9f932f6a27880, type: 2}

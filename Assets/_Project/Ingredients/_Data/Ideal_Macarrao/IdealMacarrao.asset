@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690796eb4ae00ed47b727abfb372f307, type: 3}
+  m_Name: IdealMacarrao
+  m_EditorClassIdentifier: Assembly-CSharp::IdealIngredientData
+  ingredient: {fileID: 11400000, guid: 2cabcb935af3a5e4caa7b2a9bce265d3, type: 2}
+  processes:
+  - process: 2
+    idealScore: 20
+  components: []

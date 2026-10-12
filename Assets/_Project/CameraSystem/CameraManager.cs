@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour {
 
     private void Awake() {
         //garante que a cena comece da maneira correta(so a da bancada ligada)
-        ConfigurarCameraInicial(cameraBancada);
+        ConfigurarCameraInicial(cameraHub);
 
         //evitar que tenha uma transicao de camera no inicio, mostrando o void
         if (Camera.main != null && cameraBancada != null)

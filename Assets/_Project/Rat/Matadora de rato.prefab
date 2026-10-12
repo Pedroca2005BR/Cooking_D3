@@ -48,9 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlySwatter
   objetoInputPrefab: {fileID: 8333296955410669447, guid: a3492e95bab322c40a516909ea509200, type: 3}
-  inputOffset: {x: -0.87, y: 1.26}
-  flySwatterHeadOffset: {x: 0, y: 3.38}
-  flySwatterHeadSize: {x: 1.37, y: 1.86}
+  inputOffset: {x: -0.25, y: -0}
+  flySwatterHeadOffset: {x: 0, y: 0.65}
+  flySwatterHeadSize: {x: 0.83, y: 0.71}
+  ratLayer:
+    serializedVersion: 2
+    m_Bits: 128
   duration: 0.4
   killingSprite: {fileID: 0}
   mouseSpriteRenderer: {fileID: 0}
@@ -89,7 +92,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 3.57, y: 9.47}
+  m_Size: {x: 2.51, y: 5.03}
   m_Direction: 0
 --- !u!114 &4705838795515915960
 MonoBehaviour:
@@ -98,7 +101,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6473270604016102532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8312c546ce74a4e4f93963bd9086c1c4, type: 3}
   m_Name: 
@@ -186,7 +189,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 26
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8219345210483399495, guid: e9b822bf0be0d6b4f98c8e0fb8401daf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

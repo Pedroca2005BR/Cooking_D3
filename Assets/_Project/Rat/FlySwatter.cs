@@ -21,6 +21,7 @@ public class FlySwatter : MonoBehaviour, IInteragivel
     [Header("FlySwatter Settings")]
     [SerializeField] Vector2 flySwatterHeadOffset;
     [SerializeField] Vector2 flySwatterHeadSize;
+    [SerializeField] LayerMask ratLayer;
     CameraCornerAnchor cameraCornerAnchor;
 
     // Change the following values to adjust the smack animation
@@ -152,7 +153,7 @@ public class FlySwatter : MonoBehaviour, IInteragivel
         Vector3 endvalue = new Vector3(ts.position.x - flySwatterHeadOffset.x, ts.position.y - flySwatterHeadOffset.y, 0);
         anim = transform.DOMove(endvalue, duration).SetEase(Ease.InExpo).SetLoops(2, LoopType.Yoyo).OnStepComplete( () =>
         {
-            var colls = Physics2D.OverlapBoxAll(endvalue + (Vector3)flySwatterHeadOffset, flySwatterHeadSize, 0);
+            var colls = Physics2D.OverlapBoxAll(endvalue + (Vector3)flySwatterHeadOffset, flySwatterHeadSize, 0, ratLayer);
             foreach(var coll in colls)
             {
                 if (coll.TryGetComponent<RatBehaviour>(out var rat))

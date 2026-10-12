@@ -15,5 +15,5 @@ MonoBehaviour:
   ingredient: {fileID: 11400000, guid: 2532fc235f2bb394db71fe426fe1f07f, type: 2}
   processes:
   - process: 1
-    idealScore: 59
+    idealScore: 20
   components: []

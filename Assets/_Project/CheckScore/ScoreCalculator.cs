@@ -2,31 +2,47 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// Advised to not change this class, as it is used to calculate the score of the recipe. If you want to change the scoring system, create a new class that inherits from this one and override the Calculate method.
 public static class ScoreCalculator
 {
     public const int MaxScore = 100;
     const int MaxDepth = 10; // proteção caso o designer crie um ciclo por engano
 
     public static float Calculate(IngredientRuntimeInstance actual, IdealIngredientData ideal)
+        => Normalize(Compare(actual, ideal, 0, includeOwnProcesses: true), ideal);
+
+    // Compara só os componentes do ideal, ignorando os processos do próprio nó
+    // (usado quando os ingredientes base chegam soltos no prato).
+    public static float CalculateComponents(IngredientRuntimeInstance actualRoot, IdealIngredientData ideal)
+        => Normalize(Compare(actualRoot, ideal, 0, includeOwnProcesses: false), ideal);
+
+    static float Normalize((float diff, float max) r, IdealIngredientData ideal)
     {
-        var (diff, max) = Compare(actual, ideal, 0);
-        return max <= 0 ? 1f : Mathf.Clamp01(1f - diff / max);
+        if (r.max <= 0f)
+        {
+            // Nada a avaliar: erro de dados do ideal. Nunca dar nota máxima de graça.
+            Debug.LogWarning($"O ideal '{ideal.name}' não tem processos nem componentes para avaliar. Nota 0.");
+            return 0f;
+        }
+
+        return Mathf.Clamp01(1f - r.diff / r.max);
     }
 
-    static (float diff, float max) Compare(IngredientRuntimeInstance actual, IdealIngredientData ideal, int depth)
+    static (float diff, float max) Compare(IngredientRuntimeInstance actual, IdealIngredientData ideal, int depth, bool includeOwnProcesses = true)
     {
         float diff = 0, max = 0;
         if (depth > MaxDepth) return (diff, max);
 
         // 1) Processos
-        foreach (var target in ideal.processes)
+        if (includeOwnProcesses)
         {
-            int actualScore = 0; // processo faltante = 0
-            if (actual != null) actual.ProcessScores.TryGetValue(target.process, out actualScore);
+            foreach (var target in ideal.processes)
+            {
+                int actualScore = 0; // processo faltante = 0
+                if (actual != null) actual.ProcessScores.TryGetValue(target.process, out actualScore);
 
-            diff += Mathf.Abs(target.idealScore - actualScore);
-            max += Mathf.Max(target.idealScore, MaxScore - target.idealScore); // pior diferença possível
+                diff += Mathf.Abs(target.idealScore - actualScore);
+                max += Mathf.Max(target.idealScore, MaxScore - target.idealScore);
+            }
         }
 
         // 2) Componentes (casamento guloso por tipo de ingrediente)
@@ -48,10 +64,16 @@ public static class ScoreCalculator
 
             if (best != null) remaining.Remove(best);
 
-            // best == null => componente faltante: tudo conta como 0
+            // Presença: estar no prato já vale pontos, mesmo sem processos
+            max += MaxScore;
+
             var (cd, cm) = Compare(best, idealComp, depth + 1);
-            diff += cd;
             max += cm;
+
+            if (best == null)
+                diff += MaxScore + cm;   // faltante: pior caso (presença + tudo que ele exigia)
+            else
+                diff += cd;
         }
 
         return (diff, max);
