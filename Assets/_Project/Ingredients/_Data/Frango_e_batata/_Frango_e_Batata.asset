@@ -17,9 +17,12 @@ MonoBehaviour:
     ingredient: {fileID: 11400000, guid: 678c55cbcddcf334da23bbe5477494d2, type: 2}
     amount: 1
   - textToShow: Frango
-    ingredient: {fileID: 11400000, guid: 155a313774256d24fa748eca9b543ee4, type: 2}
+    ingredient: {fileID: 11400000, guid: 59990a30298c65a458126388de53d277, type: 2}
     amount: 1
   howToMakeChecklist:
+  - textToShow: Corte o frango!
+    ingredient: {fileID: 11400000, guid: 155a313774256d24fa748eca9b543ee4, type: 2}
+    amount: 1
   - textToShow: Corte a batata!
     ingredient: {fileID: 11400000, guid: ff09564ea99e0f24d9502bf411171026, type: 2}
     amount: 1

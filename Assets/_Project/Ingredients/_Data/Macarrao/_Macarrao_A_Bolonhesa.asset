@@ -26,10 +26,10 @@ MonoBehaviour:
     ingredient: {fileID: 11400000, guid: d7bc99befb0d0514199741adc440b550, type: 2}
     amount: 1
   - textToShow: "1 Por\xE7\xE3o de Spaghetti"
-    ingredient: {fileID: 11400000, guid: df4e418345427ff4c8103bacf7519e39, type: 2}
+    ingredient: {fileID: 11400000, guid: a4ced29f493bc7a4ca95ff335d965919, type: 2}
     amount: 1
   - textToShow: "1 Carne mo\xEDda"
-    ingredient: {fileID: 11400000, guid: 20c26faeacdb6934c9c94b7505a16927, type: 2}
+    ingredient: {fileID: 11400000, guid: d322ffd52f151714daa0138dd8b60496, type: 2}
     amount: 1
   howToMakeChecklist:
   - textToShow: Corte a cebola!

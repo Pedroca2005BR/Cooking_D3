@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
+  m_Name: MacarraoPote
+  m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
+  baseName: Spaghetti no pote
+  baseSprite: {fileID: 6711114934467662184, guid: b91907a3fae17d343a2f54d105da270a, type: 3}
+  possibleConversions:
+  - processNeeded: 2
+    minimumScoreNeeded: 0
+    newIngredientData: {fileID: 11400000, guid: df4e418345427ff4c8103bacf7519e39, type: 2}
+  junkIngredient: {fileID: 0}

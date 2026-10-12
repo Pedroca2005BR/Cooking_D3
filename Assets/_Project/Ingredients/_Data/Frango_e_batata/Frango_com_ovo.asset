@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7607d968aa9ea4bad0fd2747fbf7d1, type: 3}
   m_Name: Frango_com_ovo
   m_EditorClassIdentifier: Assembly-CSharp::BaseIngredientData
-  baseName: Frango picado
+  baseName: Frango picado com ovo
   baseSprite: {fileID: -7999604283871440202, guid: 12bf41319a556a54f8e7b885f60abee3, type: 3}
   possibleConversions:
   - processNeeded: 6
