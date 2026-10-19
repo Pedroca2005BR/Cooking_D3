@@ -15,6 +15,9 @@ MonoBehaviour:
   baseName: Frango picado com ovo
   baseSprite: {fileID: -7999604283871440202, guid: 12bf41319a556a54f8e7b885f60abee3, type: 3}
   possibleConversions:
+  - processNeeded: 3
+    minimumScoreNeeded: 30
+    newIngredientData: {fileID: 11400000}
   - processNeeded: 6
     minimumScoreNeeded: 0
     newIngredientData: {fileID: 11400000, guid: 2d8d7cf4ec796e24093c282039df6ef6, type: 2}

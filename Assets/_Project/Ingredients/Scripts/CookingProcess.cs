@@ -10,5 +10,6 @@ public enum CookingProcess
     Ketchup = 5,
     Farinhar = 6,
     Fritar = 7,
-    Dourar = 8
+    Dourar = 8,
+    ThrownIntoPan = 9
 }

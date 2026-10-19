@@ -23,6 +23,7 @@ public class FlySwatter : MonoBehaviour, IInteragivel
     [SerializeField] Vector2 flySwatterHeadSize;
     [SerializeField] LayerMask ratLayer;
     CameraCornerAnchor cameraCornerAnchor;
+    Physics2DRaycaster raycaster;
 
     // Change the following values to adjust the smack animation
     [Header("Tween Settings")]
@@ -42,6 +43,7 @@ public class FlySwatter : MonoBehaviour, IInteragivel
     private void Awake()
     {
         cameraCornerAnchor = GetComponent<CameraCornerAnchor>();
+        raycaster = Camera.main.GetComponent<Physics2DRaycaster>();
     }
     private void OnEnable()
     {
@@ -111,18 +113,23 @@ public class FlySwatter : MonoBehaviour, IInteragivel
         }
     }
 
-    void Unequip()
+    public void Unequip()
     {
-        Camera.main.GetComponent<Physics2DRaycaster>().enabled = true;
-        isEquipped = false;
         cameraCornerAnchor.enabled = false;
+        raycaster.enabled = true;
+        isEquipped = false;
+
+        transform.DOKill();
+
+        Debug.Log("Unequipped!");
     }
 
     void Equip()
     {
-        Camera.main.GetComponent<Physics2DRaycaster>().enabled = false; // Disabling raycasting to prevent clicking on other objects while equipped
-        isEquipped = true;
         cameraCornerAnchor.enabled = true;
+        raycaster.enabled = false; // Disabling raycasting to prevent clicking on other objects while equipped
+        isEquipped = true;
+        Debug.Log("Equipped!");
     }
 
 
@@ -161,10 +168,9 @@ public class FlySwatter : MonoBehaviour, IInteragivel
                     rat.Die();
                 }
             }
-        } );
+        } ).OnComplete(() => cameraCornerAnchor.enabled = true);
 
         yield return anim.WaitForCompletion();
-        cameraCornerAnchor.enabled = true;
     }
 
     private void OnDrawGizmosSelected()

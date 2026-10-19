@@ -76,4 +76,15 @@ public class DraggableComponent : MonoBehaviour, IPointerUpHandler, IPointerDown
         isBeingDragged = false;
         OnGrabbed.Invoke(false);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Food") && isBeingDragged)
+        {
+            var sr = collision.gameObject.GetComponent<SpriteRenderer>();
+            int sortOrder = sr.sortingOrder;
+            GetComponent<SpriteRenderer>().sortingOrder = sortOrder + 1;
+            sr.sortingOrder = 10;
+        }
+    }
 }

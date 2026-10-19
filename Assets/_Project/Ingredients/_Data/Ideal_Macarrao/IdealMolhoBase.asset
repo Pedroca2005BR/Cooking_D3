@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: IdealMolhoBase
   m_EditorClassIdentifier: Assembly-CSharp::IdealIngredientData
   ingredient: {fileID: 11400000, guid: bd97124eb3cde584d955c80f9cbd843e, type: 2}
-  processes: []
+  processes:
+  - process: 9
+    idealScore: 0
   components: []

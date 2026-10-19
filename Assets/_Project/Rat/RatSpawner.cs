@@ -10,6 +10,8 @@ public class RatSpawner : MonoBehaviour
     [SerializeField] RatSpawnData[] ratPrefabs;
     [SerializeField] AnimationCurve ratSpawnChance; // This curve is used to determine the chance of spawning a rat based on the number of rats already present. The x-axis represents the ratio of current rats to max rats, and the y-axis represents the spawn chance (0 to 1).
     [SerializeField][Tooltip("Will be used to evalueate the curve.")] int maxRatAmount;
+    [SerializeField] float startingCooldown = 15f;
+    float currentCoolodownTimer;
 
     [Header("Sprites")]
     [SerializeField] Sprite empty;
@@ -31,23 +33,31 @@ public class RatSpawner : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = empty;
+        currentCoolodownTimer = startingCooldown;
     }
 
     private void Update()
     {
-        checkTimer += Time.deltaTime;
+        // Coolodwn pra começar o jogo
+        currentCoolodownTimer -= Time.deltaTime;
 
-        if (checkTimer >= checkCooldown)
+        if (currentCoolodownTimer < 0)
         {
-            checkTimer = 0f;
-            float rand = Random.value;
-            if (rand < eyesChance)
+            // Cooldown pra trocar a chance de spawn
+            checkTimer += Time.deltaTime;
+
+            if (checkTimer >= checkCooldown)
             {
-                spriteRenderer.sprite = eyesInside;
-            }
-            else
-            {
-                spriteRenderer.sprite = empty;
+                checkTimer = 0f;
+                float rand = Random.value;
+                if (rand < eyesChance)
+                {
+                    spriteRenderer.sprite = eyesInside;
+                }
+                else
+                {
+                    spriteRenderer.sprite = empty;
+                }
             }
         }
     }
@@ -156,7 +166,8 @@ public class RatSpawner : MonoBehaviour
             ingredients.Add(ingredient.ingredientComponent);
         }
 
-        TrySpawningRat();
+        if (currentCoolodownTimer < 0)
+            TrySpawningRat();
     }
 
 

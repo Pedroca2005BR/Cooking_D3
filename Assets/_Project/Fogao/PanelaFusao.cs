@@ -7,8 +7,14 @@ public class PanelaFusao : MonoBehaviour, IReceberIngrediente
     private IngredientFuserComponent fuser;
     private List<IngredienteFogao> ingredientes = new List<IngredienteFogao>();
 
+    [Header("Special case: Process added")]
+    private FoodProcessorComponent foodProcessor;
+    [Tooltip("These ingredients will go through a special process to change them into their pan version.")]
+    [SerializeField] private List<BaseIngredientData> specialIngredients; 
+
     private void Awake() {
         fuser = GetComponent<IngredientFuserComponent>();
+        foodProcessor = GetComponent<FoodProcessorComponent>();
     }
 
     public bool AceitaIngrediente(GameObject objeto) {
@@ -18,6 +24,8 @@ public class PanelaFusao : MonoBehaviour, IReceberIngrediente
     public void ReceberIngredienteSolto(GameObject objeto) {
         IngredienteFogao novoIngrediente = objeto.GetComponent<IngredienteFogao>();
         if (novoIngrediente == null || ingredientes.Contains(novoIngrediente)) return;
+
+        TryProcessSpecial(objeto.GetComponent<IngredientComponent>());
 
         ingredientes.Add(novoIngrediente);
         
@@ -63,6 +71,22 @@ public class PanelaFusao : MonoBehaviour, IReceberIngrediente
             if (ingredientes.Count > 0) {
                 BoxCollider2D col = ingredientes[0].GetComponent<BoxCollider2D>();
                 if (col != null) col.enabled = true;
+            }
+        }
+    }
+
+    void TryProcessSpecial(IngredientComponent ic)
+    {
+
+        if (specialIngredients.Contains(ic.data))
+        {
+            foodProcessor.ProcessIngredient(ic, 0);
+
+            int timeConsumer = 0;
+
+            while(timeConsumer < 10)
+            {
+                timeConsumer++;
             }
         }
     }

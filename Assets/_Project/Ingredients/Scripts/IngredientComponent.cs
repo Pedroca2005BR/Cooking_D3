@@ -54,6 +54,7 @@ public class IngredientComponent : MonoBehaviour
 
         // Visuals
         spriteRenderer.sprite = data.baseSprite;
+        spriteRenderer.sortingOrder = 10;
 
         // Event Trigger
         EventManager.TriggerEvent(EventConstantNames.INGREDIENT_CREATED, new IngredientEventData(data, this, this));
